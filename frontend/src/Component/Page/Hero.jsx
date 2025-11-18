@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ClipboardList, Truck, Coffee, MessageSquare } from "lucide-react";
+import hero from "../../assets/heroimage.jpg"
+import CountUp from "react-countup";
 
 // Hero Section
 function Hero() {
@@ -8,18 +10,16 @@ function Hero() {
       id="home"
       className="h-screen bg-cover bg-center flex items-center justify-center text-center"
       style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1503481766315-7a586b20f66d?w=500&auto=format&fit=crop&q=60')",
+        backgroundImage: `url(${hero})`,
       }}
     >
       <div className="w-full h-full flex flex-col items-center justify-center text-white px-4">
         <p className="text-lg italic text-yellow-400 mb-2">Welcome</p>
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
           AMAZING TASTE & BEAUTIFUL PLACE
         </h1>
         <p className="max-w-2xl mb-6">
-          A small river named Duden flows by their place and supplies it with
-          the necessary regelialia.
+          “Good ideas start with great coffee shared among friends.”
         </p>
         <div className="flex gap-6">
           <button className="bg-yellow-600 hover:bg-yellow-700 px-6 py-3 rounded-lg text-lg font-semibold transition">
@@ -52,7 +52,7 @@ function OurStory() {
         <h3 className="text-yellow-500 italic text-2xl mb-2">Discover</h3>
         <h2 className="text-4xl font-bold mb-6">OUR STORY</h2>
         <p className="text-gray-300 leading-relaxed">
-          On her way she met a copy. The copy warned the Little Blind Text...
+          Our journey began with a simple love for coffee and a dream to create a space where people could gather, share stories, and enjoy perfectly brewed beverages. From selecting the finest beans to crafting each cup with care, we focus on quality, warmth, and connection. Every sip reflects our passion, dedication, and the joy of bringing communities together over coffee
         </p>
       </div>
     </section>
@@ -105,7 +105,7 @@ function OurMenu() {
         <h3 className="text-yellow-500 italic text-2xl mb-2">Discover</h3>
         <h2 className="text-4xl font-bold mb-6">OUR MENU</h2>
         <p className="text-gray-300 leading-relaxed mb-6">
-          Far far away, behind the word mountains...
+          Coffee is a life, so enjoy.
         </p>
         <button className="border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black px-6 py-3 rounded-lg transition w-fit mx-auto md:mx-0">
           View Full Menu
@@ -140,10 +140,10 @@ function OurMenu() {
 // Stats Section
 function Stats() {
   const stats = [
-    { number: "100", label: "Coffee Branches" },
-    { number: "85", label: "Number of Awards" },
-    { number: "10,567", label: "Happy Customer" },
-    { number: "900", label: "Staff" },
+    { number: 100, label: "Coffee Branches" },
+    { number: 85, label: "Number of Awards" },
+    { number: 10567, label: "Happy Customers" },
+    { number: 900, label: "Staff" },
   ];
 
   return (
@@ -158,11 +158,11 @@ function Stats() {
       <div className="absolute inset-0 bg-black/70"></div>
       <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
         {stats.map((item, index) => (
-          <div key={index}>
-            <h3 className="text-3xl font-bold text-yellow-500">
-              {item.number}
+          <div key={index} className="hover:scale-105 transform transition duration-300">
+            <h3 className="text-4xl md:text-5xl font-bold text-yellow-500">
+              <CountUp start={0} end={item.number} duration={10} separator="," />
             </h3>
-            <p className="text-gray-300 mt-2">{item.label}</p>
+            <p className="text-gray-300 mt-2 text-lg">{item.label}</p>
           </div>
         ))}
       </div>
@@ -170,31 +170,33 @@ function Stats() {
   );
 }
 
+
+
 // Best Sellers Section
 function BestSellers() {
   const products = [
     {
       img: "https://images.unsplash.com/photo-1511920170033-f8396924c348",
       name: "COFFEE CAPUCCINO",
-      desc: "A small river named Duden flows by their place and supplies",
+      desc: "Savor every sip of creamy, rich cappuccino bliss",
       price: "$5.90",
     },
     {
-      img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
-      name: "COFFEE CAPUCCINO",
-      desc: "A small river named Duden flows by their place and supplies",
-      price: "$5.90",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsbQCX3u4g1e_hmgaOAfQHT9RunewHHqIQpg&s",
+      name: "AMERICANO",
+      desc: "Bold and smooth, Americano awakens your senses daily",
+      price: "$4.50",
     },
     {
-      img: "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03",
-      name: "COFFEE CAPUCCINO",
-      desc: "A small river named Duden flows by their place and supplies",
-      price: "$5.90",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZBL477dOHACARGh2Thsw5t7t70K4cZNJFBA&s",
+      name: "EXPRESSO",
+      desc: "Intense and rich, espresso ignites your coffee passion",
+      price: "$6.00",
     },
     {
-      img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
-      name: "COFFEE CAPUCCINO",
-      desc: "A small river named Duden flows by their place and supplies",
+      img: "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/the_perfect_mocha_coffee_29100_16x9.jpg",
+      name: "MOCHA",
+      desc: "Chocolatey, rich, and smooth, mocha warms every heart",
       price: "$5.90",
     },
   ];
@@ -205,7 +207,7 @@ function BestSellers() {
         <h3 className="text-yellow-500 italic text-2xl mb-2">Discover</h3>
         <h2 className="text-4xl font-bold mb-6">BEST COFFEE SELLERS</h2>
         <p className="max-w-2xl mx-auto text-gray-400 mb-12">
-          Far far away, behind the word mountains...
+          "Taste excellence from our top coffee sellers, brewed just for you."
         </p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {products.map((item, index) => (
@@ -266,19 +268,19 @@ function Products() {
       {
         img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141",
         name: "Grilled Beef",
-        desc: "Far far away, behind the word mountains...",
+        desc: "Juicy, smoky, perfectly grilled beef delight",
         price: "$2.90",
       },
       {
-        img: "https://images.unsplash.com/photo-1604908177522-04011817f0eb",
+        img: "https://ux2cms.imgix.net/images/glazed-lamb-ribs.jpg?auto=compress,format&w=750https://i0.wp.com/danieldiver.net/wp-content/uploads/2020/02/img_20190926_142935_8274081043488606540201.jpg?fit=2400%2C3000&ssl=1https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdEKUeoXmek9fSbJiPQxbdIg7e8r7IkuHPEg&shttps://thebigmansworld.com/wp-content/uploads/2023/06/lamb-ribs-recipe.jpghttps://www.seriouseats.com/thmb/7krlJdfnpXB53aqHg-vBSHjiDPc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/perfectly-grilled-lamb-rib-or-loin-chops-recipe-hero-03-262fe2defc7c491688cb2d363dad3446.JPG",
         name: "Lamb Ribs",
-        desc: "Separated they live in Bookmarksgrove...",
+        desc: "Tender, flavorful lamb ribs, perfectly grilled",
         price: "$2.90",
       },
       {
-        img: "https://images.unsplash.com/photo-1617196038435-5c2813a1cfb2",
+        img: "https://media.istockphoto.com/id/587207508/photo/sliced-grilled-steak-ribeye-with-herb-butter.jpg?s=612x612&w=0&k=20&c=gm6Kg6rHYH0xWTF5oszm6NZ-hp9aPRbk9V1kvCr8MQI=",
         name: "Steak",
-        desc: "A large language ocean...",
+        desc: "Juicy, tender steak cooked to perfection",
         price: "$2.90",
       },
     ],
@@ -320,18 +322,17 @@ function Products() {
         <h3 className="text-yellow-500 italic text-2xl mb-2">Discover</h3>
         <h2 className="text-4xl font-bold mb-6">OUR PRODUCTS</h2>
         <p className="max-w-2xl mx-auto text-gray-400 mb-12">
-          Far far away, behind the word mountains...
+          "Explore our flavors, crafted to delight every coffee lover's palate."
         </p>
         <div className="flex justify-center gap-6 mb-10">
           {Object.keys(categories).map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-4 py-2 ${
-                activeTab === cat
+              className={`px-4 py-2 ${activeTab === cat
                   ? "bg-yellow-600 text-black font-bold"
                   : "text-gray-300 hover:text-yellow-500"
-              } rounded transition`}
+                } rounded transition`}
             >
               {cat}
             </button>
@@ -364,28 +365,28 @@ function Products() {
 function Testimonials() {
   const feedbacks = [
     {
-      text: "Even the all-powerful Pointing has no control about the blind texts...",
-      name: "Louise Kelly",
-      role: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/women/1.jpg",
+      text: "The coffee here is absolutely delicious, I keep coming back!",
+      name: "Sunita Sharma",
+      role: "Customer",
+      img: "https://randomuser.me/api/portraits/women/65.jpg",
     },
     {
-      text: "One day however a small line of blind text decided to leave...",
-      name: "Louise Kelly",
-      role: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/men/32.jpg",
+      text: "The staff are very friendly, and the ambiance is really cozy.",
+      name: "Anil Thapa",
+      role: "Customer",
+      img: "https://randomuser.me/api/portraits/men/75.jpg",
     },
     {
-      text: "Separated they live in Bookmarksgrove right at the coast...",
-      name: "Louise Kelly",
-      role: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/women/44.jpg",
+      text: "The cappuccino tastes amazing, I always order it.",
+      name: "Maya Gurung",
+      role: "Customer",
+      img: "https://randomuser.me/api/portraits/women/45.jpg",
     },
     {
-      text: "A large language ocean. A small river named Duden flows by...",
-      name: "Louise Kelly",
-      role: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/men/12.jpg",
+      text: "The coffee blend here is unique and flavorful, makes me visit often.",
+      name: "Rajesh Adhikari",
+      role: "Customer",
+      img: "https://randomuser.me/api/portraits/men/52.jpg",
     },
   ];
 
@@ -401,9 +402,9 @@ function Testimonials() {
       <div className="absolute inset-0 bg-black/60"></div>
       <div className="relative z-10 container mx-auto px-6 text-center">
         <h3 className="text-yellow-500 italic text-2xl mb-2">Testimony</h3>
-        <h2 className="text-4xl font-bold mb-6">CUSTOMERS SAYS</h2>
+        <h2 className="text-4xl font-bold mb-6">CUSTOMERS SAY</h2>
         <p className="max-w-2xl mx-auto text-gray-300 mb-12">
-          Far far away, behind the word mountains...
+          Here’s what our customers have to say about our coffee shop.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {feedbacks.map((f, i) => (
@@ -431,6 +432,7 @@ function Testimonials() {
   );
 }
 
+
 // BLOG SECTION (10th page)
 function Blog() {
   const posts = [
@@ -438,19 +440,19 @@ function Blog() {
       img: "https://preview.colorlib.com/theme/coffeeblend/images/image_1.jpg",
       date: "Sept 10, 2018",
       title: "The Delicious Pizza",
-      desc: "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
+      desc: "Hot, cheesy, and perfectly baked pizza that delights every bite you take.",
     },
     {
       img: "https://preview.colorlib.com/theme/coffeeblend/images/image_2.jpg",
       date: "Sept 10, 2018",
       title: "The Delicious Pasta",
-      desc: "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
+      desc: "Freshly cooked pasta with rich sauce, bringing comfort and flavor in every bite.",
     },
     {
-      img: "https://preview.colorlib.com/theme/coffeeblend/images/image_3.jpg",
+      img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Momo_nepal.jpg/1200px-Momo_nepal.jpg",
       date: "Sept 10, 2018",
-      title: "The Delicious Pizza",
-      desc: "A small river named Duden flows by their place and supplies it with the necessary regelialia.",
+      title: "The Delicious Momo",
+      desc: "Steamed or fried momos, bursting with flavor, making every bite pure happiness.",
     },
   ];
 
@@ -459,8 +461,7 @@ function Blog() {
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold mb-3">RECENT FROM BLOG</h2>
         <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia, there live the blind texts.
+          Discover stories, tips, and coffee inspirations that awaken your senses and brighten every day.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {posts.map((p, i) => (
@@ -575,19 +576,18 @@ function Footer() {
         <div>
           <h2 className="text-white text-lg font-semibold mb-6">ABOUT US</h2>
           <p className="leading-7 text-sm">
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live the blind texts.
+            Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
           </p>
 
           <div className="flex gap-4 mt-8">
             <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.204-4.92 4.917 0 .385.045.76.127 1.122C7.728 8.84 4.1 6.88 1.671 3.885a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.214 2.19 4.099A4.903 4.903 0 0 1 .964 9.15v.062c0 2.385 1.693 4.374 3.946 4.827a4.935 4.935 0 0 1-2.212.084 4.93 4.93 0 0 0 4.604 3.417A9.868 9.868 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.212c9.056 0 14.01-7.506 14.01-14.01 0-.213-.006-.425-.016-.636A10.012 10.012 0 0 0 24 4.557z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.204-4.92 4.917 0 .385.045.76.127 1.122C7.728 8.84 4.1 6.88 1.671 3.885a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.214 2.19 4.099A4.903 4.903 0 0 1 .964 9.15v.062c0 2.385 1.693 4.374 3.946 4.827a4.935 4.935 0 0 1-2.212.084 4.93 4.93 0 0 0 4.604 3.417A9.868 9.868 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.212c9.056 0 14.01-7.506 14.01-14.01 0-.213-.006-.425-.016-.636A10.012 10.012 0 0 0 24 4.557z" /></svg>
             </div>
             <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 320 512" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H293V6.26S259.5 0 225.36 0C141.09 0 89.33 44.38 89.33 124.72v70.62H0V288h89.33v224h105.6V288z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 320 512" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H293V6.26S259.5 0 225.36 0C141.09 0 89.33 44.38 89.33 124.72v70.62H0V288h89.33v224h105.6V288z" /></svg>
             </div>
             <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 448 512" fill="currentColor"><path d="M224.1 141c-63.6 0-115 51.5-115 115.1s51.4 115.1 115 115.1 115-51.5 115-115.1-51.4-115.1-115-115.1zm0 190.1c-41.4 0-75-33.7-75-75.1s33.6-75.1 75-75.1 75 33.7 75 75.1-33.6 75.1-75 75.1zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zM398.8 80c-1.7-35.3-9.9-66.7-36.2-93C336.3 7.7 305 0 269.7 0H178.3C142.1 0 110.7 7.7 85.5 33 59.2 59.3 51 90.7 49.3 126 47.7 161.6 47 206.2 47 256s.7 94.4 2.3 130c1.7 35.3 9.9 66.7 36.2 93 26.3 25.3 57.6 33 92.9 33h91.4c35.3 0 66.6-7.7 92.9-33 26.3-26.3 34.5-57.7 36.2-93 1.6-35.6 2.3-80.2 2.3-130s-.7-94.4-2.3-130z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 448 512" fill="currentColor"><path d="M224.1 141c-63.6 0-115 51.5-115 115.1s51.4 115.1 115 115.1 115-51.5 115-115.1-51.4-115.1-115-115.1zm0 190.1c-41.4 0-75-33.7-75-75.1s33.6-75.1 75-75.1 75 33.7 75 75.1-33.6 75.1-75 75.1zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zM398.8 80c-1.7-35.3-9.9-66.7-36.2-93C336.3 7.7 305 0 269.7 0H178.3C142.1 0 110.7 7.7 85.5 33 59.2 59.3 51 90.7 49.3 126 47.7 161.6 47 206.2 47 256s.7 94.4 2.3 130c1.7 35.3 9.9 66.7 36.2 93 26.3 25.3 57.6 33 92.9 33h91.4c35.3 0 66.6-7.7 92.9-33 26.3-26.3 34.5-57.7 36.2-93 1.6-35.6 2.3-80.2 2.3-130s-.7-94.4-2.3-130z" /></svg>
             </div>
           </div>
         </div>
@@ -597,10 +597,10 @@ function Footer() {
           <h2 className="text-white text-lg font-semibold mb-6">RECENT BLOG</h2>
 
           <div className="flex gap-4 mb-6">
-            <img src="https://via.placeholder.com/90" className="w-20 h-20 object-cover rounded" />
+            <img src="https://bruvi.com/cdn/shop/articles/specialtycoffeeshop-header-min_1300x.jpg?v=1626718466" className="w-20 h-20 object-cover rounded" />
             <div>
               <p className="text-sm text-white font-medium leading-6">
-                Even the all-powerful Pointing has no control about
+                How to choose the best coffeeshop in the town.
               </p>
               <div className="flex items-center gap-3 text-xs mt-2">
                 <span className="flex items-center gap-1"><span>📅</span> Sept 15, 2018</span>
@@ -611,10 +611,10 @@ function Footer() {
           </div>
 
           <div className="flex gap-4">
-            <img src="https://via.placeholder.com/90" className="w-20 h-20 object-cover rounded" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROVWOX3cebBRuBfS5N3rJW7vCtG9k3a9ZGrA&s" className="w-20 h-20 object-cover rounded" />
             <div>
               <p className="text-sm text-white font-medium leading-6">
-                Even the all-powerful Pointing has no control about
+                Which coffee has best taste and improve health.
               </p>
               <div className="flex items-center gap-3 text-xs mt-2">
                 <span className="flex items-center gap-1"><span>📅</span> Sept 15, 2018</span>
@@ -660,7 +660,7 @@ function Footer() {
       </div>
 
       <div className="text-center text-gray-400 text-sm mt-20">
-        Copyright ©2025 All rights reserved | 
+        Copyright ©2025 All rights reserved | CofeeBlend |
       </div>
     </footer>
   );

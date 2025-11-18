@@ -80,8 +80,7 @@ const Services = () => {
               About Us
             </h3>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts.
+              Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
             </p>
             <div className="flex space-x-4 text-lg">
               <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
@@ -104,7 +103,7 @@ const Services = () => {
 
             <div className="flex items-start mb-4">
               <img
-                src="https://images.unsplash.com/photo-1604908176997-6f4d4a5e8a3b?auto=format&fit=crop&w=100&q=80"
+                src="https://vps029.manageserver.in/menu/wp-content/uploads/2024/01/images-8-1.jpeg"
                 alt="food"
                 className="w-16 h-16 object-cover mr-4"
               />
@@ -120,7 +119,7 @@ const Services = () => {
 
             <div className="flex items-start">
               <img
-                src="https://images.unsplash.com/photo-1617196036076-7c4b0b7dc893?auto=format&fit=crop&w=100&q=80"
+                src="https://img.goodfon.com/wallpaper/big/e/cf/food-cofee-cooky.webp"
                 alt="pasta"
                 className="w-16 h-16 object-cover mr-4"
               />
@@ -158,14 +157,14 @@ const Services = () => {
                 <span className="block">Tinkune, </span>
                 <span>Tinkune-32, Kathmandu, Nepal</span>
               </li>
-              <li>+2 392 3929 210</li>
+              <li>+977- 9823478567</li>
               <li>coffeeblend@gmail.com</li>
             </ul>
           </div>
         </div>
 
         <p className="text-center text-gray-500 text-sm mt-12 border-t border-gray-800 pt-6">
-          Copyright ©2025 All rights reserved |
+          Copyright ©2025 All rights reserved | CofeeBlend | 
           <span className="text-red-500"></span> 
         </p>
       </footer>

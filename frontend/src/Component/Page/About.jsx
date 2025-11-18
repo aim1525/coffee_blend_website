@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Quote,
   Coffee,
@@ -58,12 +58,7 @@ function AboutStory() {
             Our Story
           </h2>
           <p className="text-gray-300 leading-relaxed text-[15px]">
-            On her way she met a copy. The copy warned the Little Blind Text
-            that where it came from it would have been rewritten a thousand
-            times, and everything that was left from its origin would be the
-            word “and.” But nothing the copy said could convince her, and so she
-            didn’t take long until a few insidious Copy Writers ambushed her and
-            dragged her into their agency.
+            Our coffee shop began with a passion for exceptional coffee and community. We carefully source and roast the finest beans, crafting every cup with dedication. Each sip delivers warmth, flavor, and memorable moments. We invite you to experience our cozy space, where coffee brings people together.
           </p>
         </div>
       </div>
@@ -76,31 +71,31 @@ function CustomerTestimonials() {
   const testimonials = [
     {
       quote:
-        "Even the all–powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small.",
-      name: "Louise Kelly",
-      title: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/women/68.jpg",
+        "The coffee here is amazing! I visit daily and never get tired of it.",
+      name: "Ramesh Yonjan",
+      title: "Coffee Enthusiast",
+      img: "https://randomuser.me/api/portraits/men/45.jpg",
     },
     {
       quote:
-        "Even the all–powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.",
-      name: "Louise Kelly",
-      title: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/women/65.jpg",
+        "A cozy place to enjoy my favorite latte. The staff is always welcoming.",
+      name: "Sita Gurung",
+      title: "Barista Lover",
+      img: "https://randomuser.me/api/portraits/women/34.jpg",
     },
     {
       quote:
-        "Even the all–powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.",
-      name: "Louise Kelly",
-      title: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/men/70.jpg",
+        "Best espresso in town! Perfect aroma, rich flavor, and relaxing environment.",
+      name: "Anil Thapa",
+      title: "Coffee Aficionado",
+      img: "https://randomuser.me/api/portraits/men/22.jpg",
     },
     {
       quote:
-        "Even the all–powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.",
-      name: "Louise Kelly",
-      title: "Illustrator Designer",
-      img: "https://randomuser.me/api/portraits/men/71.jpg",
+        "Their cappuccino is top-notch. I love spending mornings here with friends.",
+      name: "Maya Shrestha",
+      title: "Regular Customer",
+      img: "https://randomuser.me/api/portraits/women/56.jpg",
     },
   ];
 
@@ -122,8 +117,7 @@ function CustomerTestimonials() {
           Customers Says
         </h2>
         <p className="text-gray-300 max-w-2xl mx-auto mb-12">
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia, there live the blind texts.
+          Our customers love the aroma, flavor, and cozy atmosphere of our café.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -153,6 +147,7 @@ function CustomerTestimonials() {
   );
 }
 
+
 // ✅ Page 4 — Discover Our Menu
 function DiscoverMenu() {
   const menuImages = [
@@ -172,9 +167,7 @@ function DiscoverMenu() {
           Our Menu
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto mb-10">
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia, there live the blind texts. Separated they
-          live in Bookmarksgrove right at the coast of the Semantics.
+          Explore our menu filled with rich aromas, freshly brewed coffees, delicious pastries, and handcrafted beverages that delight every taste bud.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
@@ -196,14 +189,46 @@ function DiscoverMenu() {
   );
 }
 
-// ✅ Page 5 — Coffee Stats
+//stats
 function CoffeeStats() {
   const stats = [
-    { number: "100", label: "Coffee Branches" },
-    { number: "85", label: "Number of Awards" },
-    { number: "10,567", label: "Happy Customer" },
-    { number: "900", label: "Staff" },
+    { number: 100, label: "Coffee Branches" },
+    { number: 85, label: "Number of Awards" },
+    { number: 10567, label: "Happy Customer" },
+    { number: 900, label: "Staff" },
   ];
+
+  const [counts, setCounts] = useState(stats.map(() => 0));
+
+  useEffect(() => {
+    const duration = 8000; // animation duration in ms
+    let animationFrame;
+
+    const startTime = Date.now();
+
+    const animate = () => {
+      const now = Date.now();
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Ease-out for smoother counting
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+      const newCounts = stats.map((item) =>
+        Math.floor(item.number * easedProgress)
+      );
+
+      setCounts(newCounts);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
 
   return (
     <section
@@ -221,7 +246,9 @@ function CoffeeStats() {
             <div className="border border-[#c6975c] p-6 rounded-md">
               <Coffee className="text-[#c6975c] w-10 h-10" />
             </div>
-            <h3 className="text-[#c6975c] text-3xl font-bold">{item.number}</h3>
+            <h3 className="text-[#c6975c] text-3xl font-bold">
+              {counts[index].toLocaleString()}
+            </h3>
             <p className="text-gray-300">{item.label}</p>
           </div>
         ))}
@@ -229,6 +256,7 @@ function CoffeeStats() {
     </section>
   );
 }
+
 
 // ✅ Page 6 — Footer Section
 function Footer() {
@@ -323,7 +351,7 @@ function Footer() {
 
       {/* Copyright */}
       <div className="text-center text-gray-400 mt-12 border-t border-gray-800 pt-6 text-sm">
-        Copyright ©2025 All rights reserved |
+        Copyright ©2025 All rights reserved | CoffeeBlend |
       </div>
     </footer>
   );

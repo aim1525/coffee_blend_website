@@ -71,43 +71,56 @@ export default function Navbar() {
               ))}
 
               {/* Shop Dropdown */}
-              <li
-                className="relative"
-                onMouseEnter={() => setShopOpen(true)}
-                onMouseLeave={() => setShopOpen(false)}
-              >
-                <button className="relative transition duration-300 hover:text-yellow-500 uppercase">
-                  Shop
-                </button>
-                {shopOpen && (
-                  <ul className="absolute right-0 mt-3 bg-black/90 text-white rounded-lg shadow-lg w-40 py-2 animate__animated animate__fadeIn">
-                    <li>
-                      <Link
-                        to="/shop"
-                        className="block px-4 py-2 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
-                      >
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/cart"
-                        className="block px-4 py-2 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
-                      >
-                        Cart
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/checkout"
-                        className="block px-4 py-2 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
-                      >
-                        Checkout
-                      </Link>
-                    </li>
-                  </ul>
-                )}
-              </li>
+              <li className="relative">
+  <button
+    onClick={() => setShopOpen(!shopOpen)}
+    className="relative transition duration-300 hover:text-yellow-500 uppercase"
+  >
+    Shop
+  </button>
+
+  {shopOpen && (
+    <ul className="absolute right-0 mt-3 bg-black/90 text-white rounded-lg shadow-lg w-40 py-2 animate__animated animate__fadeIn">
+      <li>
+        <Link
+          to="/shop"
+          onClick={() => setShopOpen(false)} // Close after click
+          className="block px-4 py-2 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
+        >
+          Shop
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/SingleProduct"
+          onClick={() => setShopOpen(false)}
+          className="block px-4 py-2 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
+        >
+          Single Product
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/cart"
+          onClick={() => setShopOpen(false)}
+          className="block px-4 py-2 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
+        >
+          Cart
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/checkout"
+          onClick={() => setShopOpen(false)}
+          className="block px-4 py-2 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
+        >
+          Checkout
+        </Link>
+      </li>
+    </ul>
+  )}
+</li>
+
             </ul>
 
             {/* Cart */}

@@ -12,12 +12,14 @@ import Hero from "./Component/Page/Hero";
 import SignupForm from "./Component/Page/Signup";
 import LoginForm from "./Component/Page/Login";
 import VerifyEmail from "./Component/auth/VerifyEmail";
-
+import ScrollToTop from "./Component/Page/ScrollToTop";
+import SingleProduct from "./Component/Page/SingleProduct";
 
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
+      <ScrollToTop />
       <div className="pt-16">
         <Routes>
           <Route path="/" element={<Hero />} />
@@ -29,6 +31,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
+          <Route path="/SingleProduct" element={<SingleProduct />} />
           {/* Future expansion */}
         <Route path="/verify/:token" element={<VerifyEmail />} />
 

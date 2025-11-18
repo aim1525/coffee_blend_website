@@ -31,20 +31,6 @@ function App() {
 
   return (
     <div className="bg-[#0d0b0b] text-white font-sans">
-      {/* Navbar */}
-      <nav className="fixed w-full top-0 left-0 bg-black bg-opacity-60 text-white z-50">
-        <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-          <h1 className="text-2xl font-bold tracking-widest">COFFEE BLEND</h1>
-          <ul className="flex space-x-8 uppercase text-sm">
-            <li className="hover:text-yellow-400 cursor-pointer">Home</li>
-            <li className="hover:text-yellow-400 cursor-pointer">Menu</li>
-            <li className="hover:text-yellow-400 cursor-pointer">Services</li>
-            <li className="hover:text-yellow-400 cursor-pointer">Blog</li>
-            <li className="hover:text-yellow-400 cursor-pointer">About</li>
-            <li className="hover:text-yellow-400 cursor-pointer">Contact</li>
-          </ul>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section
@@ -101,15 +87,10 @@ function App() {
           </h3>
           <h2 className="text-4xl font-semibold mb-6">Discover Our Story</h2>
           <p className="text-gray-300 mb-4 leading-relaxed">
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live the blind texts. Separated they
-            live in Bookmarksgrove right at the coast of the Semantics, a large
-            language ocean.
+            Our coffee journey started with a love for quality and community. From small beginnings, we carefully select and roast the finest beans, crafting each cup with passion. Every sip reflects our dedication to flavor, warmth, and memorable experiences.
           </p>
           <p className="text-gray-300 mb-6 leading-relaxed">
-            A small river named Duden flows by their place and supplies it with
-            the necessary regelialia. It is a paradisematic country, in which
-            roasted parts of sentences fly into your mouth.
+            We invite coffee lovers to explore our cozy shop, where every brew tells a story. With attention to detail and commitment to excellence, we create moments of joy, connection, and inspiration. Discover the essence of coffee, handcrafted for every taste and occasion.
           </p>
           <button className="bg-yellow-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 transition">
             Learn More
@@ -124,8 +105,7 @@ function App() {
           <div>
             <h3 className="font-semibold text-white mb-4">ABOUT US</h3>
             <p className="text-sm mb-4">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts.
+              Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
             </p>
             <div className="flex space-x-4">
               <Twitter className="hover:text-yellow-400 cursor-pointer" />
@@ -190,7 +170,7 @@ function App() {
         </div>
 
         <p className="text-center text-sm mt-10 text-gray-500">
-          Copyright ©2025 All rights reserved | 
+          Copyright ©2025 All rights reserved | CoffeeBlend |
         </p>
       </footer>
     </div>
