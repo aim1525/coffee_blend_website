@@ -84,8 +84,10 @@
 //   );
 // }
 
+
+// LoginForm.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -97,23 +99,23 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTo = location.state?.from || "/";
 
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) return toast.error("Fill all fields");
 
     try {
-      const res = await API.post("/login", { email, password });
-
-      // 🔥 SAVE LOGIN STATUS
+      const res = await API.post("/auth/login", { email, password });
       localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userId", res.data.userId);
 
       toast.success(res.data.message);
 
-      // 🔄 Redirect after login
       setTimeout(() => {
-        navigate("/");
-        window.location.reload(); // 🔥 forces Navbar to update
+        navigate(redirectTo);
+        window.location.reload();
       }, 1200);
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed");
@@ -128,7 +130,6 @@ export default function LoginForm() {
       >
         <h2 className="text-2xl font-bold mb-6 text-center text-white">Login</h2>
 
-        {/* Email Input */}
         <div className="mb-5">
           <label className="block mb-2 text-gray-300 text-sm">Email</label>
           <input
@@ -140,7 +141,6 @@ export default function LoginForm() {
           />
         </div>
 
-        {/* Password Input */}
         <div className="mb-5 relative">
           <label className="block mb-2 text-gray-300 text-sm">Password</label>
           <input
@@ -158,10 +158,9 @@ export default function LoginForm() {
           </span>
         </div>
 
-        {/* Login Button */}
         <button
           type="submit"
-          className="w-full py-3 mb-4 bg-yellow-500 text-black font-bold rounded-xl shadow-lg"
+          className="w-full py-3 mb-4 bg-blue-500 text-black font-bold rounded-xl shadow-lg"
         >
           Login
         </button>
@@ -177,7 +176,6 @@ export default function LoginForm() {
         </p>
       </form>
 
-      {/* Toastify */}
       <ToastContainer position="top-right" autoClose={2000} theme="dark" />
     </div>
   );

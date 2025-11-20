@@ -14,11 +14,13 @@ import LoginForm from "./Component/Page/Login";
 import VerifyEmail from "./Component/auth/VerifyEmail";
 import ScrollToTop from "./Component/Page/ScrollToTop";
 import SingleProduct from "./Component/Page/SingleProduct";
+import Cart from "./Component/Page/Cart";
 
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
+      
       <ScrollToTop />
       <div className="pt-16">
         <Routes>
@@ -26,16 +28,17 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/services" element={<Services />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/about" element={<About/>} />
+          <Route path="/about" element={<About />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/SingleProduct" element={<SingleProduct />} />
-          {/* Future expansion */}
-        <Route path="/verify/:token" element={<VerifyEmail />} />
 
-          <Route path="/cart" element={<div>Cart Page</div>} />
+          <Route path="/verify/:token" element={<VerifyEmail />} />
+
+          <Route path="/cart" element={<Cart />} />
+
           <Route path="/checkout" element={<div>Checkout Page</div>} />
         </Routes>
       </div>

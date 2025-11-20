@@ -130,7 +130,7 @@ export default function SignupForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 mb-4 bg-yellow-500 text-black font-bold rounded-xl shadow-lg"
+          className="w-full py-3 mb-4 bg-blue-500 text-black font-bold rounded-xl shadow-lg"
         >
           {loading ? "Creating..." : "Signup"}
         </button>
