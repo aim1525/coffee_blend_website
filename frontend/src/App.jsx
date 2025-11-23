@@ -8,7 +8,7 @@ import Blog from "./Component/Page/Blog";
 import About from "./Component/Page/About";
 import Shop from "./Component/Page/Shop";
 import Contact from "./Component/Page/Contact";
-import Hero from "./Component/Page/Hero";
+import Hero from "./Component/Page/Home";
 import SignupForm from "./Component/Page/Signup";
 import LoginForm from "./Component/Page/Login";
 import VerifyEmail from "./Component/auth/VerifyEmail";

@@ -690,16 +690,45 @@
 
 
 
-import { ClipboardList, Truck, Coffee, MessageSquare } from "lucide-react";
-import hero from "../../assets/heroimage.jpg";
+import { ClipboardList, Truck, Coffee, MessageSquare, Home } from "lucide-react";
+import hero from "../../assets/images/home/heroimage.jpg";
+import ourstory from "../../assets/images/home/ourstory.jpg"
+import menu1 from "../../assets/images/menu/heromenu1.jpg"
+import menu2 from "../../assets/images/menu/heromenu2.webp"
+import menu3 from "../../assets/images/menu/heromenu3.jpg"
+import menu4 from "../../assets/images/menu/heromenu4.jpg"
+import coffeeseller1 from "../../assets/images/coffeeseller/coffeeseller1.jpg"
+import coffeeseller2 from "../../assets/images/coffeeseller/coffeeseller2.webp"
+import coffeeseller3 from "../../assets/images/coffeeseller/coffeeseller3.jpeg"
+import coffeeseller4 from "../../assets/images/coffeeseller/coffeeseller4.jpg"
+import community1 from "../../assets/images/discovercommunity/community1.webp"
+import community2 from "../../assets/images/discovercommunity/community2.webp"
+import community3 from "../../assets/images/discovercommunity/community3.jpg"
+import community4 from "../../assets/images/discovercommunity/community4.avif"
+import grilledBeef from "../../assets/images/ourproducts/maindish/grilledBeef.jpg"
+import lambRibs from "../../assets/images/ourproducts/maindish/lambRibs.jpg"
+import steak from "../../assets/images/ourproducts/maindish/steak.jpg"
+import cappuccino from "../../assets/images/ourproducts/drinks/cappuccino.webp"
+import espresso from "../../assets/images/ourproducts/drinks/espresso.jpg"
+import cheeseCake from "../../assets/images/ourproducts/desserts/cheeseCake.jpg"
+import chocolateCake from "../../assets/images/ourproducts/desserts/chocolateCake.jpg"
+import deliciousMomo from "../../assets/images/bloghome/deliciousMomo.webp"
+import deliciousPasta from "../../assets/images/bloghome/deliciousPasta.jpg"
+import deliciousPizza from "../../assets/images/bloghome/deliciousPizza.webp"
+import statsimage from "../../assets/images/statsimage/statsimage.webp"
+import customersay from "../../assets/images/customersay/customersay.webp"
 import CountUp from "react-countup";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 import { ToastContainer, toast } from "react-toastify";
+
+import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
+
+
 
 
 const API = axios.create({
@@ -743,7 +772,11 @@ function Hero() {
         <p className="max-w-2xl mb-6">“Good ideas start with great coffee shared among friends.”</p>
         <div className="flex gap-6">
           <button className="bg-yellow-600 hover:bg-yellow-700 px-6 py-3 rounded-lg text-lg font-semibold transition">Order Now</button>
-          <button className="border border-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-black transition">View Menu</button>
+          <a href="/menu">
+            <button className="border border-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-black transition">
+              View Full Menu
+            </button>
+          </a>
         </div>
       </div>
     </section>
@@ -753,11 +786,11 @@ function Hero() {
 function OurStory() {
   return (
     <section id="about" className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-black text-white">
-      <div className="w-full md:w-1/2 h-[400px] md:h-screen bg-cover bg-center" style={{ backgroundImage: "url('https://preview.colorlib.com/theme/coffeeblend/images/about.jpg')" }}></div>
+      <div className="w-full md:w-1/2 h-[400px] md:h-screen bg-cover bg-center" style={{ backgroundImage: `url(${ourstory})` }}></div>
       <div className="w-full md:w-1/2 p-10 flex flex-col justify-center bg-black/70">
         <h3 className="text-yellow-500 italic text-2xl mb-2">Discover</h3>
         <h2 className="text-4xl font-bold mb-6">OUR STORY</h2>
-        <p className="text-gray-300 leading-relaxed">Our journey began with a simple love for coffee and a dream to create a space where people could gather, share stories, and enjoy perfectly brewed beverages.</p>
+        <p className="text-gray-300 leading-relaxed">Our story began with a simple love for the aroma of freshly brewed coffee and the comfort it brings. What started as a small passion soon grew into a dream to create a space where people could slow down, connect, and enjoy coffee crafted with care. We traveled, learned, and sourced beans from dedicated farmers who share our commitment to quality. Every cup we brew reflects their hard work and our dedication to perfecting every roast. From rich espresso shots to smooth handcrafted lattes, our journey is fueled by passion, community, and the belief that coffee brings people together.</p>
       </div>
     </section>
   );
@@ -792,13 +825,17 @@ function OurMenu() {
         <h3 className="text-yellow-500 italic text-2xl mb-2">Discover</h3>
         <h2 className="text-4xl font-bold mb-6">OUR MENU</h2>
         <p className="text-gray-300 leading-relaxed mb-6">Coffee is a life, so enjoy.</p>
-        <button className="border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black px-6 py-3 rounded-lg transition w-fit mx-auto md:mx-0">View Full Menu</button>
+        <a href="/menu">
+          <button className="border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black px-6 py-3 rounded-lg transition w-fit mx-auto md:mx-0">
+            View Full Menu
+          </button>
+        </a>
       </div>
       <div className="w-full md:w-1/2 grid grid-cols-2 gap-4 p-6">
-        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" className="rounded-lg object-cover w-full h-64" />
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" className="rounded-lg object-cover w-full h-64" />
-        <img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03" className="rounded-lg object-cover w-full h-64" />
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" className="rounded-lg object-cover w-full h-64" />
+        <img src={menu1} className="rounded-lg object-cover w-full h-64" />
+        <img src={menu2} className="rounded-lg object-cover w-full h-64" />
+        <img src={menu3} className="rounded-lg object-cover w-full h-64" />
+        <img src={menu4} className="rounded-lg object-cover w-full h-64" />
       </div>
     </section>
   );
@@ -813,13 +850,13 @@ function Stats() {
   ];
 
   return (
-    <section id="stats" className="relative bg-cover bg-center text-white py-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1509042239860-f550ce710b93')" }}>
+    <section id="stats" className="relative bg-cover bg-center text-white py-20" style={{ backgroundImage: `url(${statsimage})` }}>
       <div className="absolute inset-0 bg-black/70"></div>
       <div className="relative z-10 container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
         {stats.map((item, index) => (
           <div key={index}>
             <h3 className="text-5xl font-bold text-yellow-500">
-              <CountUp start={0} end={item.number} duration={10} separator="," />
+              <CountUp start={0} end={item.number} duration={6} separator="" />
             </h3>
             <p className="text-gray-300 mt-2 text-lg">{item.label}</p>
           </div>
@@ -832,10 +869,10 @@ function Stats() {
 function BestSellers() {
   const addToCart = useAddToCart();
   const products = [
-    { id: "capuccino1", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348", name: "COFFEE CAPUCCINO", description: "Savor every sip", price: 5.9 },
-    { id: "americano1", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsbQCX3u4g1e_hmgaOAfQHT9RunewHHqIQpg&s", name: "AMERICANO", description: "Bold and smooth", price: 4.5 },
-    { id: "espresso1", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZBL477dOHACARGh2Thsw5t7t70K4cZNJFBA&s", name: "EXPRESSO", description: "Intense and rich", price: 6.0 },
-    { id: "mocha1", img: "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/the_perfect_mocha_coffee_29100_16x9.jpg", name: "MOCHA", description: "Chocolatey smooth", price: 5.9 },
+    { id: "capuccino1", img: coffeeseller4, name: "COFFEE CAPUCCINO", description: "Savor every sip", price: 5.9 },
+    { id: "americano1", img: coffeeseller3, name: "AMERICANO", description: "Bold and smooth", price: 4.5 },
+    { id: "espresso1", img: coffeeseller2, name: "EXPRESSO", description: "Intense and rich", price: 6.0 },
+    { id: "mocha1", img: coffeeseller1, name: "MOCHA", description: "Chocolatey smooth", price: 5.9 },
   ];
 
   return (
@@ -866,17 +903,17 @@ function Products() {
   const addToCart = useAddToCart();
   const categories = {
     "Main Dish": [
-      { id: "beef1", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141", name: "Grilled Beef", description: "Juicy delight", price: 2.9 },
-      { id: "lamb1", img: "https://ux2cms.imgix.net/images/glazed-lamb-ribs.jpg?auto=compress", name: "Lamb Ribs", description: "Tender ribs", price: 2.9 },
-      { id: "steak1", img: "https://media.istockphoto.com/id/587207508/photo/sliced-grilled-steak-ribeye.jpg", name: "Steak", description: "Tender steak", price: 2.9 },
+      { id: "beef1", img: grilledBeef, name: "Grilled Beef", description: "Juicy delight", price: 2.9 },
+      { id: "lamb1", img: lambRibs, name: "Lamb Ribs", description: "Tender ribs", price: 2.9 },
+      { id: "steak1", img: steak, name: "Steak", description: "Tender steak", price: 2.9 },
     ],
     Drinks: [
-      { id: "espresso2", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93", name: "Espresso", description: "Smooth espresso", price: 1.9 },
-      { id: "cap2", img: "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03", name: "Cappuccino", description: "Milk foam delight", price: 3.2 },
+      { id: "espresso2", img: espresso, name: "Espresso", description: "Smooth espresso", price: 1.9 },
+      { id: "cap2", img: cappuccino, name: "Cappuccino", description: "Milk foam delight", price: 3.2 },
     ],
     Desserts: [
-      { id: "cake1", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836", name: "Chocolate Cake", description: "Rich chocolate", price: 4.5 },
-      { id: "cheese1", img: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40", name: "Cheesecake", description: "Creamy dessert", price: 4.9 },
+      { id: "cake1", img: chocolateCake, name: "Chocolate Cake", description: "Rich chocolate", price: 4.5 },
+      { id: "cheese1", img: cheeseCake, name: "Cheesecake", description: "Creamy dessert", price: 4.9 },
     ],
   };
 
@@ -912,12 +949,7 @@ function Products() {
 }
 
 function Gallery() {
-  const images = [
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
-    "https://images.unsplash.com/photo-1525610553991-2bede1a236e2",
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-    "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03",
-  ];
+  const images = [community1, community2, community3, community4];
 
   return (
     <section id="gallery" className="bg-black py-20">
@@ -943,7 +975,7 @@ function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="relative bg-cover bg-center text-white py-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1498804103079-a6351b050096')" }}>
+    <section id="testimonials" className="relative bg-cover bg-center text-white py-20" style={{ backgroundImage: `url(${customersay})` }}>
       <div className="absolute inset-0 bg-black/60"></div>
       <div className="relative z-10 container mx-auto px-6 text-center">
         <h3 className="text-yellow-500 italic text-2xl mb-2">Testimony</h3>
@@ -970,9 +1002,9 @@ function Testimonials() {
 
 function Blog() {
   const posts = [
-    { img: "https://preview.colorlib.com/theme/coffeeblend/images/image_1.jpg", date: "Sept 10, 2018", title: "The Delicious Pizza", desc: "Hot and cheesy." },
-    { img: "https://preview.colorlib.com/theme/coffeeblend/images/image_2.jpg", date: "Sept 10, 2018", title: "The Delicious Pasta", desc: "Fresh and flavorful." },
-    { img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Momo_nepal.jpg/1200px-Momo_nepal.jpg", date: "Sept 10, 2018", title: "The Delicious Momo", desc: "Steamed or fried." },
+    { img: deliciousPizza, date: "Sept 10, 2018", title: "The Delicious Pizza", desc: "Hot and cheesy." },
+    { img: deliciousPasta, date: "Sept 10, 2018", title: "The Delicious Pasta", desc: "Fresh and flavorful." },
+    { img: deliciousMomo, date: "Sept 10, 2018", title: "The Delicious Momo", desc: "Steamed or fried." },
   ];
 
   return (
@@ -1166,24 +1198,110 @@ const BookTable = () => {
   );
 };
 
-
-
-
-
+{/* ---------- FOOTER SECTION ---------- */ }
 
 function Footer() {
   return (
-    <footer className="bg-black text-gray-300 py-20 px-6 lg:px-24">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer className="bg-black text-gray-300 py-16 px-8 md:px-20">
+      <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+
+        {/* About Us */}
         <div>
-          <h2 className="text-white text-lg font-semibold mb-6">ABOUT US</h2>
-          <p className="leading-7 text-sm">Brewing passion and flavor.</p>
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            About Us
+          </h3>
+          <p className="text-gray-400 leading-relaxed mb-6">
+            Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
+          </p>
+          <div className="flex space-x-4 text-lg">
+            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+              <FaTwitter />
+            </a>
+            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+              <FaFacebookF />
+            </a>
+            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+              <FaInstagram />
+            </a>
+          </div>
+        </div>
+
+        {/* Recent Blog */}
+        <div>
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            Recent Blog
+          </h3>
+
+          <div className="flex items-start mb-4">
+            <img
+              src="https://vps029.manageserver.in/menu/wp-content/uploads/2024/01/images-8-1.jpeg"
+              alt="food"
+              className="w-16 h-16 object-cover mr-4"
+            />
+            <div>
+              <p className="font-medium text-white text-sm">
+                Even the all-powerful Pointing has no control about
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Sept 15, 2018 • Admin • 19
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start">
+            <img
+              src="https://img.goodfon.com/wallpaper/big/e/cf/food-cofee-cooky.webp"
+              alt="pasta"
+              className="w-16 h-16 object-cover mr-4"
+            />
+            <div>
+              <p className="font-medium text-white text-sm">
+                Even the all-powerful Pointing has no control about
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Sept 15, 2018 • Admin • 19
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Services */}
+        <div>
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            Services
+          </h3>
+          <ul className="space-y-2 text-gray-400 text-sm">
+            <li>Cooked</li>
+            <li>Deliver</li>
+            <li>Quality Foods</li>
+            <li>Mixed</li>
+          </ul>
+        </div>
+
+        {/* Have a Questions */}
+        <div>
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            Have a Questions?
+          </h3>
+          <ul className="space-y-3 text-gray-400 text-sm">
+            <li>
+              <span className="block">Tinkune, </span>
+              <span>Tinkune-32, Kathmandu, Nepal</span>
+            </li>
+            <li>+977- 9823478567</li>
+            <li>coffeeblend@gmail.com</li>
+          </ul>
         </div>
       </div>
-      <div className="text-center text-gray-400 text-sm mt-20">©2025 CoffeeBlend</div>
+
+      <p className="text-center text-gray-500 text-sm mt-12 border-t border-gray-800 pt-6">
+        Copyright ©2025 All rights reserved | CofeeBlend |
+        <span className="text-red-500"></span>
+      </p>
     </footer>
-  );
+  )
 }
+
 
 export default function App() {
   return (

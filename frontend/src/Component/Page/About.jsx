@@ -1,4 +1,14 @@
 import React, { useState, useEffect } from "react";
+import aboutmenu1 from "../../assets/images/aboutmenu/aboutmenu1.webp"
+import aboutmenu2 from "../../assets/images/aboutmenu/aboutmenu2.webp"
+import aboutmenu3 from "../../assets/images/aboutmenu/aboutmenu3.jpeg"
+import aboutmenu4 from "../../assets/images/aboutmenu/aboutmenu4.jpg"
+import aboutbackground from "../../assets/images/aboutmenu/aboutbackground.webp"
+import aboutbackground1 from "../../assets/images/aboutmenu/aboutbackground1.webp"
+import aboutbackground2 from "../../assets/images/aboutmenu/aboutbackground2.webp"
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import aboutustop from "../../assets/images/aboutmenu/aboutustop.jpg"
+import aboutourstory from "../../assets/images/aboutmenu/aboutourstory.webp"
 import {
   Quote,
   Coffee,
@@ -12,30 +22,51 @@ import {
   User,
   MessageSquare,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // ✅ Page 1 — Hero Section
-function AboutHero() {
+
+function About() {
+  useEffect(() => {
+    document.title = "About Us | Coffee Blend";
+  }, []);
+
   return (
-    <section
-      className="relative h-[80vh] bg-cover bg-center flex items-center justify-center"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80')",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/60"></div>
-      <div className="relative text-center text-white px-4">
-        <h1 className="text-5xl md:text-6xl font-bold mb-4 uppercase">
-          About Us
+    <div className="relative h-[70vh] w-full">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${aboutustop})` // change to your image path
+        }}
+      ></div>
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Content */}
+      <div className="relative h-full flex flex-col items-center justify-center text-white text-center">
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-wide">
+          ABOUT US
         </h1>
-        <p className="text-lg max-w-2xl mx-auto text-gray-200">
-          Discover the story behind our passion for coffee, crafted moments, and
-          warm experiences that bring people together.
-        </p>
+
+        <div className="mt-3 flex gap-2 text-sm">
+          <Link
+            to="/"
+            className="opacity-80 hover:opacity-100 cursor-pointer"
+          >
+            HOME
+          </Link>
+
+          <span>/</span>
+
+          <span className="opacity-100 font-semibold">ABOUT</span>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
+
 
 // ✅ Page 2 — Our Story Section
 function AboutStory() {
@@ -43,7 +74,7 @@ function AboutStory() {
     <section className="w-full flex flex-col md:flex-row">
       <div className="md:w-1/2 w-full h-[70vh]">
         <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80"
+          src={aboutourstory}
           alt="Coffee shop interior"
           className="w-full h-full object-cover"
         />
@@ -104,7 +135,7 @@ function CustomerTestimonials() {
       className="relative py-20 bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80')",
+          `url(${aboutbackground})`
       }}
     >
       <div className="absolute inset-0 bg-black/70"></div>
@@ -150,12 +181,7 @@ function CustomerTestimonials() {
 
 // ✅ Page 4 — Discover Our Menu
 function DiscoverMenu() {
-  const menuImages = [
-    "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
-  ];
+  const menuImages = [aboutmenu1, aboutmenu2, aboutmenu3, aboutmenu4];
 
   return (
     <section className="bg-[#0e0d0d] text-white py-20">
@@ -181,9 +207,10 @@ function DiscoverMenu() {
           ))}
         </div>
 
+        <a href="/menu">
         <button className="border border-[#c6975c] text-[#c6975c] hover:bg-[#c6975c] hover:text-black px-6 py-3 rounded-md font-semibold transition duration-300">
           View Full Menu
-        </button>
+        </button></a>
       </div>
     </section>
   );
@@ -235,7 +262,7 @@ function CoffeeStats() {
       className="relative py-20 bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80')",
+          `url(${aboutbackground1})`,
       }}
     >
       <div className="absolute inset-0 bg-black/70"></div>
@@ -261,65 +288,75 @@ function CoffeeStats() {
 // ✅ Page 6 — Footer Section
 function Footer() {
   return (
-    <footer className="bg-black text-white py-16 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        {/* About */}
+    <footer className="bg-black text-gray-300 py-16 px-8 md:px-20">
+      <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+
+        {/* About Us */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">ABOUT US</h3>
-          <p className="text-gray-400 mb-6">
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live the blind texts.
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            About Us
+          </h3>
+          <p className="text-gray-400 leading-relaxed mb-6">
+            Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
           </p>
-          <div className="flex space-x-4">
-            {[Twitter, Facebook, Instagram].map((Icon, i) => (
-              <div
-                key={i}
-                className="bg-gray-800 hover:bg-[#c6975c] p-2 rounded-full transition-colors duration-300"
-              >
-                <Icon size={20} />
-              </div>
-            ))}
+          <div className="flex space-x-4 text-lg">
+            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+              <FaTwitter />
+            </a>
+            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+              <FaFacebookF />
+            </a>
+            <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+              <FaInstagram />
+            </a>
           </div>
         </div>
 
         {/* Recent Blog */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">RECENT BLOG</h3>
-          {[1, 2].map((_, i) => (
-            <div key={i} className="flex items-center mb-4">
-              <img
-                src={
-                  i === 0
-                    ? "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=150&q=80"
-                    : "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=150&q=80"
-                }
-                alt="blog"
-                className="w-16 h-16 rounded object-cover mr-4"
-              />
-              <div>
-                <p className="font-medium">
-                  Even the all–powerful Pointing has no control about
-                </p>
-                <div className="flex text-gray-400 text-sm items-center space-x-3 mt-2">
-                  <div className="flex items-center space-x-1">
-                    <Calendar size={14} /> <span>Sept 15, 2018</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <User size={14} /> <span>Admin</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <MessageSquare size={14} /> <span>19</span>
-                  </div>
-                </div>
-              </div>
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            Recent Blog
+          </h3>
+
+          <div className="flex items-start mb-4">
+            <img
+              src="https://vps029.manageserver.in/menu/wp-content/uploads/2024/01/images-8-1.jpeg"
+              alt="food"
+              className="w-16 h-16 object-cover mr-4"
+            />
+            <div>
+              <p className="font-medium text-white text-sm">
+                Even the all-powerful Pointing has no control about
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Sept 15, 2018 • Admin • 19
+              </p>
             </div>
-          ))}
+          </div>
+
+          <div className="flex items-start">
+            <img
+              src="https://img.goodfon.com/wallpaper/big/e/cf/food-cofee-cooky.webp"
+              alt="pasta"
+              className="w-16 h-16 object-cover mr-4"
+            />
+            <div>
+              <p className="font-medium text-white text-sm">
+                Even the all-powerful Pointing has no control about
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Sept 15, 2018 • Admin • 19
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Services */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">SERVICES</h3>
-          <ul className="space-y-2 text-gray-300">
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            Services
+          </h3>
+          <ul className="space-y-2 text-gray-400 text-sm">
             <li>Cooked</li>
             <li>Deliver</li>
             <li>Quality Foods</li>
@@ -327,32 +364,26 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* Have a Questions */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">HAVE A QUESTION?</h3>
-          <ul className="space-y-4 text-gray-300">
-            <li className="flex items-start space-x-2">
-              <MapPin className="w-5 text-[#c6975c]" />
-              <span>
-                Tinkune-32, Kathmandu, Nepal
-              </span>
+          <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+            Have a Questions?
+          </h3>
+          <ul className="space-y-3 text-gray-400 text-sm">
+            <li>
+              <span className="block">Tinkune, </span>
+              <span>Tinkune-32, Kathmandu, Nepal</span>
             </li>
-            <li className="flex items-center space-x-2">
-              <Phone className="w-5 text-[#c6975c]" />
-              <span>+977-9824665789</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <Mail className="w-5 text-[#c6975c]" />
-              <span>coffeeblend@gmail.com</span>
-            </li>
+            <li>+977- 9823478567</li>
+            <li>coffeeblend@gmail.com</li>
           </ul>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="text-center text-gray-400 mt-12 border-t border-gray-800 pt-6 text-sm">
-        Copyright ©2025 All rights reserved | CoffeeBlend |
-      </div>
+      <p className="text-center text-gray-500 text-sm mt-12 border-t border-gray-800 pt-6">
+        Copyright ©2025 All rights reserved | CofeeBlend |
+        <span className="text-red-500"></span>
+      </p>
     </footer>
   );
 }
@@ -361,7 +392,7 @@ function Footer() {
 export default function AboutPage() {
   return (
     <div className="font-sans">
-      <AboutHero />
+      <About />
       <AboutStory />
       <CustomerTestimonials />
       <DiscoverMenu />

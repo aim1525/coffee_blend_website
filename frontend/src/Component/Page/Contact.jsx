@@ -113,6 +113,8 @@
 
 import React, { useState } from "react";
 import API from "../../api";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import contactus from "../../assets/images/contact/contactus.jpg";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
@@ -148,10 +150,10 @@ export default function Contact() {
         className="relative h-[90vh] bg-cover bg-center flex items-center justify-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1740&q=80')",
+            `url(${contactus})`
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative z-10 text-center text-white">
           <h1 className="text-5xl font-bold mb-4 tracking-wide">CONTACT US</h1>
           <p className="text-gray-300 text-lg">
@@ -242,12 +244,103 @@ export default function Contact() {
         ></iframe>
       </section>
 
-      <footer className="bg-gray-900 text-gray-400 py-10 text-center">
-        <p>
-          © {new Date().getFullYear()} <span className="text-white font-semibold">Coffee Blend</span>.
-          All Rights Reserved.
-        </p>
-      </footer>
+      <footer className="bg-black text-gray-300 py-16 px-8 md:px-20">
+                  <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+          
+                    {/* About Us */}
+                    <div>
+                      <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                        About Us
+                      </h3>
+                      <p className="text-gray-400 leading-relaxed mb-6">
+                        Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
+                      </p>
+                      <div className="flex space-x-4 text-lg">
+                        <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                          <FaTwitter />
+                        </a>
+                        <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                          <FaFacebookF />
+                        </a>
+                        <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                          <FaInstagram />
+                        </a>
+                      </div>
+                    </div>
+          
+                    {/* Recent Blog */}
+                    <div>
+                      <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                        Recent Blog
+                      </h3>
+          
+                      <div className="flex items-start mb-4">
+                        <img
+                          src="https://vps029.manageserver.in/menu/wp-content/uploads/2024/01/images-8-1.jpeg"
+                          alt="food"
+                          className="w-16 h-16 object-cover mr-4"
+                        />
+                        <div>
+                          <p className="font-medium text-white text-sm">
+                            Even the all-powerful Pointing has no control about
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            Sept 15, 2018 • Admin • 19
+                          </p>
+                        </div>
+                      </div>
+          
+                      <div className="flex items-start">
+                        <img
+                          src="https://img.goodfon.com/wallpaper/big/e/cf/food-cofee-cooky.webp"
+                          alt="pasta"
+                          className="w-16 h-16 object-cover mr-4"
+                        />
+                        <div>
+                          <p className="font-medium text-white text-sm">
+                            Even the all-powerful Pointing has no control about
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            Sept 15, 2018 • Admin • 19
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+          
+                    {/* Services */}
+                    <div>
+                      <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                        Services
+                      </h3>
+                      <ul className="space-y-2 text-gray-400 text-sm">
+                        <li>Cooked</li>
+                        <li>Deliver</li>
+                        <li>Quality Foods</li>
+                        <li>Mixed</li>
+                      </ul>
+                    </div>
+          
+                    {/* Have a Questions */}
+                    <div>
+                      <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                        Have a Questions?
+                      </h3>
+                      <ul className="space-y-3 text-gray-400 text-sm">
+                        <li>
+                          <span className="block">Tinkune, </span>
+                          <span>Tinkune-32, Kathmandu, Nepal</span>
+                        </li>
+                        <li>+977- 9823478567</li>
+                        <li>coffeeblend@gmail.com</li>
+                      </ul>
+                    </div>
+                  </div>
+          
+                  <p className="text-center text-gray-500 text-sm mt-12 border-t border-gray-800 pt-6">
+                    Copyright ©2025 All rights reserved | CofeeBlend | 
+                    <span className="text-red-500"></span> 
+                  </p>
+                </footer>
     </div>
   );
 }

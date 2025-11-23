@@ -1,30 +1,35 @@
 import React from "react";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
+import espresso from "../../assets/images/shop/espresso.jpg"
+import cappuccino from "../../assets/images/shop/cappuccino.jpg"
+import grilledchickensalad from "../../assets/images/shop/grilledchickensalad.jpg"
+import chocolatelavacake from "../../assets/images/shop/chocolatelavacake.jpg"
+import creamylattecoffee from "../../assets/images/shop/creamylattecoffee.webp"
 
 export default function ProductDetail() {
   const relatedProducts = [
     {
       name: "Espresso",
       price: "$3.50",
-      img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+      img: espresso,
       desc: "Strong and bold espresso made from freshly ground Arabica beans."
     },
     {
       name: "Cappuccino",
       price: "$4.50",
-      img: "https://guentercoffee.com/cdn/shop/articles/anleitung-cappuccino-blogheader.jpg?v=1758119315&width=1440",
+      img: cappuccino,
       desc: "Smooth blend of espresso, steamed milk, and frothy foam on top."
     },
     {
       name: "Grilled Chicken Salad",
       price: "$9.50",
-      img: "https://assets.epicurious.com/photos/64a845e67799ee8651e4fb8f/16:9/w_6179,h_3476,c_limit/AshaGrilledChickenSalad_RECIPE_070523_56498.jpg",
+      img: grilledchickensalad,
       desc: "Fresh greens topped with grilled chicken, cherry tomatoes, and vinaigrette."
     },
     {
       name: "Chocolate Lava Cake",
       price: "$5.00",
-      img: "https://eightforestlane.com/wp-content/uploads/2020/02/Chocolate-Lava-Cakes_SQ-1.jpg",
+      img: chocolatelavacake,
       desc: "Warm chocolate cake with a gooey molten center, served with vanilla ice cream."
     }
   ];
@@ -58,7 +63,7 @@ export default function ProductDetail() {
         {/* PRODUCT IMAGE */}
         <div>
           <img
-            src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80"
+            src={creamylattecoffee}
             alt="Coffee"
             className="rounded-xl shadow-2xl w-full"
           />
@@ -145,105 +150,103 @@ export default function ProductDetail() {
       </div>
 
       {/* FOOTER */}
-      <footer className="bg-black text-gray-300 py-16 px-6 md:px-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-
-          {/* ABOUT US */}
-           <div>
-                      <h3 className="text-lg font-semibold tracking-wider mb-4">ABOUT US</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed w-[80%]">
-                        Far far away, behind the word mountains, far from the countries Vokalia 
-                        and Consonantia, there live the blind texts.
-                      </p>
-                      <div className="flex gap-4 mt-6">
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-[#1a1a1a] flex items-center justify-center rounded-full cursor-pointer hover:bg-yellow-500 hover:text-black transition"
-            >
-              <FaTwitter className="text-white" />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-[#1a1a1a] flex items-center justify-center rounded-full cursor-pointer hover:bg-yellow-500 hover:text-black transition"
-            >
-              <FaFacebookF className="text-white" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-[#1a1a1a] flex items-center justify-center rounded-full cursor-pointer hover:bg-yellow-500 hover:text-black transition"
-            >
-              <FaInstagram className="text-white" />
-            </a>
-          </div>
-                    </div>
-
-          {/* RECENT BLOG */}
-          <div>
-            <h3 className="text-white text-lg font-semibold mb-4">RECENT BLOG</h3>
-            <div className="flex gap-4 mb-6">
-              <img
-                src="https://www.foodnhotelasia.com/wp-content/uploads/2024/01/Types-of-Coffee.jpg"
-                alt="Blog"
-                className="w-20 h-20 object-cover rounded"
-              />
-              <div className="text-sm text-gray-400">
-                <p className="text-white mb-1">
-                  Even the all-powerful Pointing has no control about
-                </p>
-                <p>Sept 15, 2018 • Admin • 19</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <img
-                src="https://c.ndtvimg.com/2025-03/1589t3j_black-coffee-_650x400_07_March_25.jpg?im=FeatureCrop,algorithm=dnn,width=545,height=307"
-                alt="Blog"
-                className="w-20 h-20 object-cover rounded"
-              />
-              <div className="text-sm text-gray-400">
-                <p className="text-white mb-1">
-                  Even the all-powerful Pointing has no control about
-                </p>
-                <p>Sept 15, 2018 • Admin • 19</p>
-              </div>
-            </div>
-          </div>
-
-          {/* SERVICES */}
-          <div>
-            <h3 className="text-white text-lg font-semibold mb-4">SERVICES</h3>
-            <ul className="space-y-3 text-gray-400 text-sm">
-              <li>Cooked</li>
-              <li>Deliver</li>
-              <li>Quality Foods</li>
-              <li>Mixed</li>
-            </ul>
-          </div>
-
-          {/* CONTACT */}
-          <div>
-            <h3 className="text-white text-lg font-semibold mb-4">HAVE A QUESTIONS?</h3>
-            <p className="flex gap-3 mb-4">
-              📍 3rd Floor, Madan Bhandari Road, Tinkune-32, Kathmandu, Nepal
-            </p>
-            <p className="flex gap-3 mb-4">
-              📞 +977-9834567844
-            </p>
-            <p className="flex gap-3">
-              ✉️ coffeeblend@gmail.com
-            </p>
-          </div>
-        </div>
-
-        <div className="text-center text-gray-500 text-sm mt-16">
-          Copyright ©2025 All rights reserved | CoffeeBlend |
-        </div>
-      </footer>
+      <footer className="bg-black text-gray-300 py-16 px-8 md:px-20">
+                        <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+                
+                          {/* About Us */}
+                          <div>
+                            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                              About Us
+                            </h3>
+                            <p className="text-gray-400 leading-relaxed mb-6">
+                              Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
+                            </p>
+                            <div className="flex space-x-4 text-lg">
+                              <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                                <FaTwitter />
+                              </a>
+                              <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                                <FaFacebookF />
+                              </a>
+                              <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                                <FaInstagram />
+                              </a>
+                            </div>
+                          </div>
+                
+                          {/* Recent Blog */}
+                          <div>
+                            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                              Recent Blog
+                            </h3>
+                
+                            <div className="flex items-start mb-4">
+                              <img
+                                src="https://vps029.manageserver.in/menu/wp-content/uploads/2024/01/images-8-1.jpeg"
+                                alt="food"
+                                className="w-16 h-16 object-cover mr-4"
+                              />
+                              <div>
+                                <p className="font-medium text-white text-sm">
+                                  Even the all-powerful Pointing has no control about
+                                </p>
+                                <p className="text-xs text-gray-500 mt-1">
+                                  Sept 15, 2018 • Admin • 19
+                                </p>
+                              </div>
+                            </div>
+                
+                            <div className="flex items-start">
+                              <img
+                                src="https://img.goodfon.com/wallpaper/big/e/cf/food-cofee-cooky.webp"
+                                alt="pasta"
+                                className="w-16 h-16 object-cover mr-4"
+                              />
+                              <div>
+                                <p className="font-medium text-white text-sm">
+                                  Even the all-powerful Pointing has no control about
+                                </p>
+                                <p className="text-xs text-gray-500 mt-1">
+                                  Sept 15, 2018 • Admin • 19
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                
+                          {/* Services */}
+                          <div>
+                            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                              Services
+                            </h3>
+                            <ul className="space-y-2 text-gray-400 text-sm">
+                              <li>Cooked</li>
+                              <li>Deliver</li>
+                              <li>Quality Foods</li>
+                              <li>Mixed</li>
+                            </ul>
+                          </div>
+                
+                          {/* Have a Questions */}
+                          <div>
+                            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+                              Have a Questions?
+                            </h3>
+                            <ul className="space-y-3 text-gray-400 text-sm">
+                              <li>
+                                <span className="block">Tinkune, </span>
+                                <span>Tinkune-32, Kathmandu, Nepal</span>
+                              </li>
+                              <li>+977- 9823478567</li>
+                              <li>coffeeblend@gmail.com</li>
+                            </ul>
+                          </div>
+                        </div>
+                
+                        <p className="text-center text-gray-500 text-sm mt-12 border-t border-gray-800 pt-6">
+                          Copyright ©2025 All rights reserved | CofeeBlend | 
+                          <span className="text-red-500"></span> 
+                        </p>
+                      </footer>
 
     </div>
   );

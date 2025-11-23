@@ -2,6 +2,9 @@
 import React from "react";
 import { FaTruck, FaCoffee, FaRegListAlt } from "react-icons/fa";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
+import servicestop from "../../assets/images/services/servicestop.webp"
+import { Link } from "react-router-dom";
+
 
 const Services = () => {
   return (
@@ -12,13 +15,15 @@ const Services = () => {
         className="relative bg-cover bg-center h-[70vh] flex flex-col justify-center items-center text-white"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1400&q=80')",
+            `url(${servicestop})`,
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <h1 className="text-5xl font-semibold z-10 tracking-widest">SERVICES</h1>
         <p className="z-10 mt-3">
-          <span className="text-gray-200">HOME</span>{" "}
+          <Link to="/" className="text-gray-200 hover:underline">
+            HOME
+          </Link>{" "}
           <span className="mx-2">•</span> SERVICES
         </p>
       </section>
@@ -164,8 +169,8 @@ const Services = () => {
         </div>
 
         <p className="text-center text-gray-500 text-sm mt-12 border-t border-gray-800 pt-6">
-          Copyright ©2025 All rights reserved | CofeeBlend | 
-          <span className="text-red-500"></span> 
+          Copyright ©2025 All rights reserved | CofeeBlend |
+          <span className="text-red-500"></span>
         </p>
       </footer>
     </div>

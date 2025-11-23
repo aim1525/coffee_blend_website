@@ -27,8 +27,6 @@ Thumbs.db
 # PORT=5000
 # MONGO_URI=mongodb://localhost:27017/Coffee_Blend
 
-
-
 # SESSION_SECRET=ajay-oauth-secret
 # JWT_SECRET=a8b85a45c0a810368bf10e496395e90851fd87e9f7a5fa28a593a6bf64f04bf42465d5ec8b6d7671b8f857bab9f3781b2cc6c01fceb78e677fc3c1f90a5d0091 
 # ESEWA_SECRET_KEY= "8gBm/:&EnhH.1/q"

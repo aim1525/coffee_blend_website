@@ -253,20 +253,67 @@
 
 
 // MenuPage.jsx
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import menuBg from "../../assets/images/menunavbar/menuBg.jpg"
+import beefstroganoff from "../../assets/images/menunavbar/beefstroganoff.jpg"
+import chickenparmesan from "../../assets/images/menunavbar/chickenparmesan.webp"
+import grilledsalmon from "../../assets/images/menunavbar/grilledsalmon.jpg"
+import lambchops from "../../assets/images/menunavbar/lambchops.jpg"
+import veggielasagna from "../../assets/images/menunavbar/veggielasagna.jpg"
+
+function Menu() {
+  useEffect(() => {
+    document.title = "Our Menu | Coffee Blend";
+  }, []);
+
+  return (
+    <div className="relative h-[70vh] w-full">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${menuBg})`,
+        }}
+      ></div>
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Content */}
+      <div className="relative h-full flex flex-col items-center justify-center text-white text-center">
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-wide">
+          OUR MENU
+        </h1>
+
+        <div className="mt-3 flex gap-2 text-sm">
+          <Link
+            to="/"
+            className="opacity-80 hover:opacity-100 cursor-pointer"
+          >
+            HOME
+          </Link>
+
+          <span>/</span>
+
+          <span className="opacity-100 font-semibold">MENU</span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export const products = {
   main: [
-    { name: "Grilled Salmon", description: "Freshly grilled salmon with garlic butter, served with roasted vegetables.", price: "$18.99", img: "https://www.thecookierookie.com/wp-content/uploads/2023/05/featured-grilled-salmon-recipe.jpg" },
-    { name: "Chicken Parmesan", description: "Crispy breaded chicken topped with marinara sauce and melted cheese.", price: "$15.50", img: "https://assets.bonappetit.com/photos/5ea8f0df16738800085ad5d2/1:1/w_2560%2Cc_limit/Chicken-Parmesean-Recipe-Lede.jpg" },
-    { name: "Beef Stroganoff", description: "Tender beef strips cooked in creamy mushroom sauce, served with noodles.", price: "$17.75", img: "https://healthyrecipesblogs.com/wp-content/uploads/2025/07/beef-stroganoff-featured-2025.jpg" },
-    { name: "Veggie Lasagna", description: "Layers of pasta, fresh vegetables, and creamy béchamel sauce.", price: "$13.25", img: "https://cdn.loveandlemons.com/wp-content/uploads/2023/12/vegetarian-lasagna-scaled.jpg" },
-    { name: "Lamb Chops", description: "Grilled lamb chops seasoned with herbs and served with mashed potatoes.", price: "$22.00", img: "https://assets.bonappetit.com/photos/5caf8dd043874c0b662978ed/1:1/w_2560%2Cc_limit/seven-spice-grilled-lamb-chops-with-parsley-salad.jpg" },
+    { name: "Grilled Salmon", description: "Freshly grilled salmon with garlic butter, served with roasted vegetables.", price: "$18.99", img: grilledsalmon},
+    { name: "Chicken Parmesan", description: "Crispy breaded chicken topped with marinara sauce and melted cheese.", price: "$15.50", img: chickenparmesan },
+    { name: "Beef Stroganoff", description: "Tender beef strips cooked in creamy mushroom sauce, served with noodles.", price: "$17.75", img: beefstroganoff },
+    { name: "Veggie Lasagna", description: "Layers of pasta, fresh vegetables, and creamy béchamel sauce.", price: "$13.25", img: veggielasagna },
+    { name: "Lamb Chops", description: "Grilled lamb chops seasoned with herbs and served with mashed potatoes.", price: "$22.00", img: lambchops },
   ],
   drinks: [
     { name: "Iced Caramel Macchiato", description: "Espresso with cold milk, ice, and rich caramel drizzle.", price: "$5.50", img: "https://www.allrecipes.com/thmb/LgtetzzQWH3GMxFISSii84XEAB8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/258686-IcedCaramelMacchiato-ddmps-4x3-104704-2effb74f7d504b8aa5fbd52204d0e2e5.jpg" },
@@ -284,7 +331,7 @@ export const products = {
   ],
 };
 
-export default function MenuPage() {
+function MenuPage() {
   const [activeTab, setActiveTab] = useState("main");
   const navigate = useNavigate();
 
@@ -331,7 +378,7 @@ export default function MenuPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 p-10">
         {products[activeTab].map((item, idx) => (
           <div key={idx} className="bg-[#1a1a1a] p-4 shadow-lg text-center flex flex-col">
-            <img src={item.img} alt={item.name} className="w-full h-56 object-cover mb-4"/>
+            <img src={item.img} alt={item.name} className="w-full h-56 object-cover mb-4" />
             <h3 className="font-bold">{item.name}</h3>
             <p className="text-gray-400 text-sm my-2">{item.description}</p>
             <p className="text-yellow-500 font-bold">{item.price}</p>
@@ -339,7 +386,114 @@ export default function MenuPage() {
           </div>
         ))}
       </div>
+      <footer className="bg-black text-gray-300 py-16 px-8 md:px-20">
+        <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+
+          {/* About Us */}
+          <div>
+            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+              About Us
+            </h3>
+            <p className="text-gray-400 leading-relaxed mb-6">
+              Brewing passion and flavor, we serve quality coffee in a cozy space, creating moments of warmth, connection, and joy.
+            </p>
+            <div className="flex space-x-4 text-lg">
+              <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                <FaTwitter />
+              </a>
+              <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                <FaFacebookF />
+              </a>
+              <a href="#" className="bg-gray-800 p-3 rounded-full hover:bg-gray-700">
+                <FaInstagram />
+              </a>
+            </div>
+          </div>
+
+          {/* Recent Blog */}
+          <div>
+            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+              Recent Blog
+            </h3>
+
+            <div className="flex items-start mb-4">
+              <img
+                src="https://vps029.manageserver.in/menu/wp-content/uploads/2024/01/images-8-1.jpeg"
+                alt="food"
+                className="w-16 h-16 object-cover mr-4"
+              />
+              <div>
+                <p className="font-medium text-white text-sm">
+                  Even the all-powerful Pointing has no control about
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  Sept 15, 2018 • Admin • 19
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <img
+                src="https://img.goodfon.com/wallpaper/big/e/cf/food-cofee-cooky.webp"
+                alt="pasta"
+                className="w-16 h-16 object-cover mr-4"
+              />
+              <div>
+                <p className="font-medium text-white text-sm">
+                  Even the all-powerful Pointing has no control about
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  Sept 15, 2018 • Admin • 19
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+              Services
+            </h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>Cooked</li>
+              <li>Deliver</li>
+              <li>Quality Foods</li>
+              <li>Mixed</li>
+            </ul>
+          </div>
+
+          {/* Have a Questions */}
+          <div>
+            <h3 className="text-white uppercase font-semibold mb-4 tracking-wide">
+              Have a Questions?
+            </h3>
+            <ul className="space-y-3 text-gray-400 text-sm">
+              <li>
+                <span className="block">Tinkune, </span>
+                <span>Tinkune-32, Kathmandu, Nepal</span>
+              </li>
+              <li>+977- 9823478567</li>
+              <li>coffeeblend@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+
+        <p className="text-center text-gray-500 text-sm mt-12 border-t border-gray-800 pt-6">
+          Copyright ©2025 All rights reserved | CofeeBlend |
+          <span className="text-red-500"></span>
+        </p>
+      </footer>
+
     </div>
   );
 }
 
+
+export default function App() {
+  return (
+    <div className="font-sans">
+      <Menu />
+      <MenuPage />
+    </div>
+  );
+}
