@@ -731,6 +731,7 @@ import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 
 
+
 const API = axios.create({
   baseURL: "http://localhost:5000/api",
 });
@@ -1031,8 +1032,181 @@ function Blog() {
 
 
 
+// const BookTable = () => {
+//   const navigate = useNavigate();
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     date: "",
+//     time: "",
+//     phone: "",
+//     message: "",
+//   });
+//   const [loading, setLoading] = useState(false);
+//   const isLoggedIn = localStorage.getItem("token");
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!isLoggedIn) {
+//       toast.info("Please login to book a table.", {
+//         position: "top-right",
+//         autoClose: 3000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         theme: "colored",
+//       });
+//       setTimeout(() => {
+//         navigate("/login");
+//       }, 1500);
+//       return;
+//     }
+
+//     setLoading(true);
+
+//     try {
+//       const response = await API.post("/book", formData);
+//       toast.success(response.data.message || "Table booked successfully!", {
+//         position: "top-right",
+//         autoClose: 3000,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: true,
+//         draggable: true,
+//         theme: "colored",
+//       });
+//       setFormData({
+//         firstName: "",
+//         lastName: "",
+//         date: "",
+//         time: "",
+//         phone: "",
+//         message: "",
+//       });
+//     } catch (err) {
+//       toast.error(
+//         err.response?.data?.message || "Server error. Try again later.",
+//         {
+//           position: "top-right",
+//           autoClose: 3000,
+//           hideProgressBar: false,
+//           closeOnClick: true,
+//           pauseOnHover: true,
+//           draggable: true,
+//           theme: "colored",
+//         }
+//       );
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <section className="bg-black text-white py-20 px-6 md:px-16 lg:px-24">
+//       <div className="max-w-6xl mx-auto">
+//         <h2 className="text-4xl font-bold text-center mb-12 text-yellow-500">
+//           Book a Table
+//         </h2>
+
+//         <form
+//           className="grid grid-cols-1 md:grid-cols-2 gap-8"
+//           onSubmit={handleSubmit}
+//         >
+//           <div>
+//             <label className="block mb-2 text-sm font-medium">First Name</label>
+//             <input
+//               type="text"
+//               name="firstName"
+//               value={formData.firstName}
+//               onChange={handleChange}
+//               className="w-full bg-transparent border-b border-gray-500 py-2"
+//               required
+//             />
+//           </div>
+//           <div>
+//             <label className="block mb-2 text-sm font-medium">Last Name</label>
+//             <input
+//               type="text"
+//               name="lastName"
+//               value={formData.lastName}
+//               onChange={handleChange}
+//               className="w-full bg-transparent border-b border-gray-500 py-2"
+//               required
+//             />
+//           </div>
+//           <div>
+//             <label className="block mb-2 text-sm font-medium">Date</label>
+//             <input
+//               type="date"
+//               name="date"
+//               value={formData.date}
+//               onChange={handleChange}
+//               className="w-full bg-transparent border-b border-gray-500 py-2"
+//               required
+//             />
+//           </div>
+//           <div>
+//             <label className="block mb-2 text-sm font-medium">Time</label>
+//             <input
+//               type="time"
+//               name="time"
+//               value={formData.time}
+//               onChange={handleChange}
+//               className="w-full bg-transparent border-b border-gray-500 py-2"
+//               required
+//             />
+//           </div>
+//           <div className="md:col-span-2">
+//             <label className="block mb-2 text-sm font-medium">Phone</label>
+//             <input
+//               type="tel"
+//               name="phone"
+//               value={formData.phone}
+//               onChange={handleChange}
+//               className="w-full bg-transparent border-b border-gray-500 py-2"
+//               required
+//             />
+//           </div>
+//           <div className="md:col-span-2">
+//             <label className="block mb-2 text-sm font-medium">Message</label>
+//             <textarea
+//               name="message"
+//               rows="3"
+//               value={formData.message}
+//               onChange={handleChange}
+//               className="w-full bg-transparent border-b border-gray-500 py-2"
+//             ></textarea>
+//           </div>
+//           <div className="md:col-span-2 flex justify-end">
+//             <button
+//               type="submit"
+//               className="bg-yellow-600 text-black py-3 px-10"
+//               disabled={loading}
+//             >
+//               {loading ? "Booking..." : "Book Table"}
+//             </button>
+//           </div>
+//         </form>
+//       </div>
+//       <ToastContainer />
+//     </section>
+//   );
+// };
+
+
+
+
+
+
 const BookTable = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -1041,8 +1215,24 @@ const BookTable = () => {
     phone: "",
     message: "",
   });
+
   const [loading, setLoading] = useState(false);
   const isLoggedIn = localStorage.getItem("token");
+
+  // 🔥 Redirect if user opens this page while logged out
+  useEffect(() => {
+    if (!isLoggedIn) {
+      toast.info("Please login to book a table.", {
+        position: "top-right",
+        autoClose: 2000,
+        theme: "colored",
+      });
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -1051,19 +1241,19 @@ const BookTable = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 🔒 Double-check on submit
     if (!isLoggedIn) {
       toast.info("Please login to book a table.", {
         position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        autoClose: 2000,
         theme: "colored",
       });
+
       setTimeout(() => {
         navigate("/login");
       }, 1500);
+
       return;
     }
 
@@ -1074,12 +1264,9 @@ const BookTable = () => {
       toast.success(response.data.message || "Table booked successfully!", {
         position: "top-right",
         autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
         theme: "colored",
       });
+
       setFormData({
         firstName: "",
         lastName: "",
@@ -1094,10 +1281,6 @@ const BookTable = () => {
         {
           position: "top-right",
           autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
           theme: "colored",
         }
       );
@@ -1128,6 +1311,7 @@ const BookTable = () => {
               required
             />
           </div>
+
           <div>
             <label className="block mb-2 text-sm font-medium">Last Name</label>
             <input
@@ -1139,6 +1323,7 @@ const BookTable = () => {
               required
             />
           </div>
+
           <div>
             <label className="block mb-2 text-sm font-medium">Date</label>
             <input
@@ -1150,6 +1335,7 @@ const BookTable = () => {
               required
             />
           </div>
+
           <div>
             <label className="block mb-2 text-sm font-medium">Time</label>
             <input
@@ -1161,6 +1347,7 @@ const BookTable = () => {
               required
             />
           </div>
+
           <div className="md:col-span-2">
             <label className="block mb-2 text-sm font-medium">Phone</label>
             <input
@@ -1172,6 +1359,7 @@ const BookTable = () => {
               required
             />
           </div>
+
           <div className="md:col-span-2">
             <label className="block mb-2 text-sm font-medium">Message</label>
             <textarea
@@ -1182,6 +1370,7 @@ const BookTable = () => {
               className="w-full bg-transparent border-b border-gray-500 py-2"
             ></textarea>
           </div>
+
           <div className="md:col-span-2 flex justify-end">
             <button
               type="submit"
@@ -1198,7 +1387,8 @@ const BookTable = () => {
   );
 };
 
-{/* ---------- FOOTER SECTION ---------- */ }
+
+
 
 function Footer() {
   return (

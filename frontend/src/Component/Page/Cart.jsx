@@ -219,9 +219,9 @@ const Cart = () => {
       </div>
       <br />
 
-      <footer className="bg-black text-gray-300 py-16 px-8 max-w-4xl mx-auto w-full">
+      <footer className="bg-black text-gray-300 py-16 w-full">
 
-        <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8">
 
           {/* About Us */}
           <div>
