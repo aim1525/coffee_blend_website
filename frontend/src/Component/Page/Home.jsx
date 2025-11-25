@@ -728,10 +728,6 @@ import { ToastContainer, toast } from "react-toastify";
 
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 
-
-
-
-
 const API = axios.create({
   baseURL: "http://localhost:5000/api",
 });
@@ -1200,13 +1196,8 @@ function Blog() {
 // };
 
 
-
-
-
-
 const BookTable = () => {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -1215,24 +1206,8 @@ const BookTable = () => {
     phone: "",
     message: "",
   });
-
   const [loading, setLoading] = useState(false);
-  const isLoggedIn = localStorage.getItem("token");
-
-  // 🔥 Redirect if user opens this page while logged out
-  useEffect(() => {
-    if (!isLoggedIn) {
-      toast.info("Please login to book a table.", {
-        position: "top-right",
-        autoClose: 2000,
-        theme: "colored",
-      });
-
-      setTimeout(() => {
-        navigate("/login");
-      }, 1500);
-    }
-  }, [isLoggedIn, navigate]);
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -1242,18 +1217,19 @@ const BookTable = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 🔒 Double-check on submit
     if (!isLoggedIn) {
       toast.info("Please login to book a table.", {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
         theme: "colored",
       });
-
       setTimeout(() => {
         navigate("/login");
       }, 1500);
-
       return;
     }
 
@@ -1264,9 +1240,12 @@ const BookTable = () => {
       toast.success(response.data.message || "Table booked successfully!", {
         position: "top-right",
         autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
         theme: "colored",
       });
-
       setFormData({
         firstName: "",
         lastName: "",
@@ -1281,6 +1260,10 @@ const BookTable = () => {
         {
           position: "top-right",
           autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
           theme: "colored",
         }
       );
@@ -1311,7 +1294,6 @@ const BookTable = () => {
               required
             />
           </div>
-
           <div>
             <label className="block mb-2 text-sm font-medium">Last Name</label>
             <input
@@ -1323,7 +1305,6 @@ const BookTable = () => {
               required
             />
           </div>
-
           <div>
             <label className="block mb-2 text-sm font-medium">Date</label>
             <input
@@ -1335,7 +1316,6 @@ const BookTable = () => {
               required
             />
           </div>
-
           <div>
             <label className="block mb-2 text-sm font-medium">Time</label>
             <input
@@ -1344,10 +1324,8 @@ const BookTable = () => {
               value={formData.time}
               onChange={handleChange}
               className="w-full bg-transparent border-b border-gray-500 py-2"
-              required
-            />
+              required />
           </div>
-
           <div className="md:col-span-2">
             <label className="block mb-2 text-sm font-medium">Phone</label>
             <input
@@ -1359,7 +1337,6 @@ const BookTable = () => {
               required
             />
           </div>
-
           <div className="md:col-span-2">
             <label className="block mb-2 text-sm font-medium">Message</label>
             <textarea
@@ -1370,7 +1347,6 @@ const BookTable = () => {
               className="w-full bg-transparent border-b border-gray-500 py-2"
             ></textarea>
           </div>
-
           <div className="md:col-span-2 flex justify-end">
             <button
               type="submit"
@@ -1385,10 +1361,7 @@ const BookTable = () => {
       <ToastContainer />
     </section>
   );
-};
-
-
-
+}
 
 function Footer() {
   return (
@@ -1491,8 +1464,6 @@ function Footer() {
     </footer>
   )
 }
-
-
 export default function App() {
   return (
     <div className="font-sans">
