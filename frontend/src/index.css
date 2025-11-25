@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 html {
   scroll-behavior: smooth;
 }
@@ -10,3 +11,5 @@ html {
 .spin-slow {
   animation: spin-slow 1s linear infinite;
 }
+
+

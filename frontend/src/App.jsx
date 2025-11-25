@@ -15,6 +15,7 @@ import VerifyEmail from "./Component/auth/VerifyEmail";
 import ScrollToTop from "./Component/Page/ScrollToTop";
 import SingleProduct from "./Component/Page/SingleProduct";
 import Cart from "./Component/Page/Cart";
+import Checkout from "./Component/Page/Checkout";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
 
           <Route path="/cart" element={<Cart />} />
 
-          <Route path="/checkout" element={<div>Checkout Page</div>} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
     </div>
