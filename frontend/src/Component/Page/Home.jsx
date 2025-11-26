@@ -768,7 +768,9 @@ function Hero() {
         <h1 className="text-4xl md:text-5xl font-bold mb-4">AMAZING TASTE & BEAUTIFUL PLACE</h1>
         <p className="max-w-2xl mb-6">“Good ideas start with great coffee shared among friends.”</p>
         <div className="flex gap-6">
-          <button className="bg-yellow-600 hover:bg-yellow-700 px-6 py-3 rounded-lg text-lg font-semibold transition">Order Now</button>
+          <a href="/cart">
+            <button className="bg-yellow-600 hover:bg-yellow-700 px-6 py-3 rounded-lg text-lg font-semibold transition">Order Now</button>
+          </a>
           <a href="/menu">
             <button className="border border-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-black transition">
               View Full Menu
