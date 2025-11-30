@@ -344,7 +344,6 @@
 
 
 
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
@@ -354,9 +353,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import carttop from "../../assets/images/carttopbackground/carttop.avif";
 
-/* -------------------------------------------------------------------------- */
-/*                                CART TOP BANNER                             */
-/* -------------------------------------------------------------------------- */
 function CartTop() {
   useEffect(() => {
     document.title = "Cart | Coffee Blend";
@@ -364,16 +360,13 @@ function CartTop() {
 
   return (
     <div className="relative h-[70vh] w-full">
-      {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${carttop})` }}
       ></div>
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-center text-white text-center">
         <h1 className="text-4xl md:text-5xl font-semibold tracking-wide">
           YOUR CART
@@ -391,9 +384,6 @@ function CartTop() {
   );
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                    CART                                    */
-/* -------------------------------------------------------------------------- */
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
@@ -447,7 +437,6 @@ const Cart = () => {
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 md:px-6 lg:px-8">
 
-      {/* -------------------- HEADER -------------------- */}
       <div className="grid grid-cols-5 bg-[#b68a56] text-white font-semibold py-4 px-6 rounded-t">
         <p className="col-span-2">Product</p>
         <p>Price</p>
@@ -455,14 +444,12 @@ const Cart = () => {
         <p>Total</p>
       </div>
 
-      {/* -------------------- ITEMS -------------------- */}
       <div className="bg-black/80 backdrop-blur border border-gray-700">
         {cartItems.map((item) => (
           <div
             key={item.id}
             className="grid grid-cols-5 items-center py-6 px-6 border-b border-gray-700 text-white"
           >
-            {/* Image + Name + Remove */}
             <div className="col-span-2 flex items-center gap-4">
               <button
                 className="text-white bg-gray-700 hover:bg-red-600 p-1 px-2 rounded"
@@ -472,7 +459,6 @@ const Cart = () => {
               </button>
 
               <img
-                src={item.image}
                 alt={item.name}
                 className="w-20 h-20 object-cover rounded"
               />
@@ -485,10 +471,8 @@ const Cart = () => {
               </div>
             </div>
 
-            {/* Price */}
             <p>${item.price.toFixed(2)}</p>
 
-            {/* Quantity */}
             <div className="flex items-center justify-center border w-20 py-2">
               <button
                 className="px-2"
@@ -505,13 +489,11 @@ const Cart = () => {
               </button>
             </div>
 
-            {/* Total */}
             <p>${(item.price * item.quantity).toFixed(2)}</p>
           </div>
         ))}
       </div>
 
-      {/* -------------------- TOTALS -------------------- */}
       <div className="flex justify-end mt-10">
         <div className="w-80 bg-black/80 border border-gray-700 text-white p-6 rounded">
           <h3 className="text-xl font-semibold mb-6">CART TOTALS</h3>
@@ -536,7 +518,6 @@ const Cart = () => {
             <p>${(subtotal - 3).toFixed(2)}</p>
           </div>
 
-          {/* Proceed to Checkout */}
           <button
             onClick={() => navigate("/checkout")}
             className="w-full mt-6 bg-[#b68a56] hover:bg-[#a37845] py-3 font-semibold rounded"

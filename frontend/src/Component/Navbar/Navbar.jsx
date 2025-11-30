@@ -203,9 +203,642 @@
 // }
 
 
-import React, { useState, useEffect, useRef } from "react";
+
+
+// import React, { useState, useEffect, useRef } from "react";
+// import { ShoppingCart } from "lucide-react";
+// import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
+
+// export default function Navbar() {
+//   const [menuOpen, setMenuOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [cartCount, setCartCount] = useState(0);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     let timeout;
+
+//     const handleScroll = () => {
+//       clearTimeout(timeout);
+//       timeout = setTimeout(() => {
+//         setScrolled(window.scrollY > 50);
+//       }, 80);
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+
+//     const loggedIn = localStorage.getItem("isLoggedIn");
+//     if (loggedIn === "true") {
+//       setIsLoggedIn(true);
+//       fetchCartCount();
+//     }
+
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//       clearTimeout(timeout);
+//     };
+//   }, []);
+
+//   const fetchCartCount = async () => {
+//     const userId = localStorage.getItem("userId");
+//     if (!userId) return;
+
+//     try {
+//       const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+//       const count =
+//         res.data.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+//       setCartCount(count);
+//     } catch {
+//       setCartCount(0);
+//     }
+//   };
+
+//   const handleLogout = () => {
+//     localStorage.removeItem("isLoggedIn");
+//     localStorage.removeItem("userId");
+//     setIsLoggedIn(false);
+//     setCartCount(0);
+//     navigate("/");
+//   };
+
+//   return (
+//     <nav
+//       className={`fixed top-0 w-full h-[80px] z-50 transition-colors duration-300 ${scrolled ? "bg-black shadow-lg" : "bg-black/60 backdrop-blur-md"
+//         }`}
+//     >
+//       <div className="max-w-30xl flex justify-between items-center py-4 text-white">
+//         <Link to="/" className="cursor-pointer">
+//           <h1 className="text-xl ml-30 font-medium tracking-widest leading-tight pl-6 md:pl-0">
+//             COFFEE
+//             <span className="block text-sm font-normal tracking-[0.25em] text-gray-300 text-center">
+//               BLEND
+//             </span>
+//           </h1>
+//         </Link>
+
+//         <div className="flex items-center gap-10 mr-10">
+//           <ul className="hidden md:flex uppercase text-[12px] py-4 gap-14">
+//             {[
+//               { name: "Home", path: "/" },
+//               { name: "Menu", path: "/menu" },
+//               { name: "Services", path: "/services" },
+//               { name: "Blog", path: "/blog" },
+//               { name: "About", path: "/about" },
+//               { name: "Contact", path: "/contact" },
+//             ].map((item, i) => (
+//               <li key={i}>
+//                 <Link
+//                   to={item.path}
+//                   className="relative transition duration-200 hover:text-yellow-500 cursor-pointer"
+//                 >
+//                   {item.name}
+//                 </Link>
+//               </li>
+//             ))}
+
+//             <li className="relative cursor-pointer group">
+//               <span className="transition duration-200 hover:text-yellow-500 uppercase">
+//                 Shop
+//               </span>
+
+//               <ul className="absolute left-1/2 -translate-x-1/2 mt-3 bg-black/90 text-white rounded-lg shadow-lg w-40 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+//                 <li>
+//                   <Link
+//                     to="/shop"
+//                     className="block px-4 py-2 hover:text-white text-gray-500"
+//                   >
+//                     Shop
+//                   </Link>
+//                 </li>
+//                 <li>
+//                   <Link
+//                     to="/SingleProduct"
+//                     className="block px-4 py-2 hover:text-white text-gray-500"
+//                   >
+//                     Single Product
+//                   </Link>
+//                 </li>
+//                 <li>
+//                   <Link
+//                     to="/cart"
+//                     className="block px-4 py-2 hover:text-white text-gray-500"
+//                   >
+//                     Cart
+//                   </Link>
+//                 </li>
+//                 <li>
+//                   <Link
+//                     to="/checkout"
+//                     className="block px-4 py-2 hover:text-white text-gray-500"
+//                   >
+//                     Checkout
+//                   </Link>
+//                 </li>
+//               </ul>
+//             </li>
+//           </ul>
+
+//           {isLoggedIn && (
+//             <Link
+//               to="/cart"
+//               className="relative flex items-center cursor-pointer"
+//             >
+//               <ShoppingCart className="w-6 h-6 hover:text-yellow-500 transition-colors duration-200 cursor-pointer" />
+//               {cartCount > 0 && (
+//                 <span className="absolute -top-2 -right-3 bg-yellow-500 text-xs font-semibold rounded-full px-1.5 cursor-pointer">
+//                   {cartCount}
+//                 </span>
+//               )}
+//             </Link>
+//           )}
+
+//           {!isLoggedIn ? (
+//             <Link
+//               to="/login"
+//               className="px-6 py-2 rounded-[4px] font-bold shadow-lg text-[15px] bg-green-500 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
+//             >
+//               Login
+//             </Link>
+//           ) : (
+//             <button
+//               onClick={handleLogout}
+//               className="px-6 py-2 rounded-xl font-bold shadow-lg bg-red-600 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
+//             >
+//               Logout
+//             </button>
+//           )}
+
+//           <button
+//             onClick={() => setMenuOpen(!menuOpen)}
+//             className="md:hidden focus:outline-none cursor-pointer"
+//           >
+//             <svg
+//               className="w-7 h-7"
+//               fill="none"
+//               stroke="currentColor"
+//               strokeWidth="2"
+//               viewBox="0 0 24 24"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 d={
+//                   menuOpen
+//                     ? "M6 18L18 6M6 6l12 12"
+//                     : "M4 6h16M4 12h16m-7 6h7"
+//                 }
+//               />
+//             </svg>
+//           </button>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+
+
+// working code 
+// import React, { useState, useEffect } from "react";
+// import { ShoppingCart } from "lucide-react";
+// import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
+
+// export default function Navbar() {
+//   const [menuOpen, setMenuOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [cartCount, setCartCount] = useState(0);
+//   const [loading, setLoading] = useState(false);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     let timeout;
+
+//     const handleScroll = () => {
+//       clearTimeout(timeout);
+//       timeout = setTimeout(() => {
+//         setScrolled(window.scrollY > 50);
+//       }, 80);
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+
+//     const loggedIn = localStorage.getItem("isLoggedIn");
+//     if (loggedIn === "true") {
+//       setIsLoggedIn(true);
+//       fetchCartCount();
+//     }
+
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//       clearTimeout(timeout);
+//     };
+//   }, []);
+
+//   const fetchCartCount = async () => {
+//     const userId = localStorage.getItem("userId");
+//     if (!userId) return;
+
+//     try {
+//       const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+//       const count =
+//         res.data.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+//       setCartCount(count);
+//     } catch {
+//       setCartCount(0);
+//     }
+//   };
+
+//   const triggerLoad = (path) => {
+//     setLoading(true);
+//     setTimeout(() => {
+//       navigate(path);
+//       setLoading(false);
+//     }, 600);
+//   };
+
+//   const handleLogout = () => {
+//     setLoading(true);
+//     localStorage.removeItem("isLoggedIn");
+//     localStorage.removeItem("userId");
+//     setIsLoggedIn(false);
+//     setCartCount(0);
+//     setTimeout(() => {
+//       navigate("/");
+//       setLoading(false);
+//     }, 600);
+//   };
+
+//   return (
+//     <>
+//       {loading && (
+//         <div className="fixed inset-0 flex justify-center items-center bg-black/70 z-[9999]">
+//           <div className="w-12 h-12 border-5 border-b-amber-300 border-t-transparent rounded-full animate-spin"></div>
+//         </div>
+//       )}
+
+//       <nav
+//         className={`fixed top-0 w-full h-[80px] z-50 transition-colors duration-300 ${
+//           scrolled ? "bg-black shadow-lg" : "bg-black/60 backdrop-blur-md"
+//         }`}
+//       >
+//         <div className="max-w-30xl flex justify-between items-center py-4 text-white">
+//           <h1
+//             onClick={() => triggerLoad("/")}
+//             className="cursor-pointer text-xl ml-30 font-medium tracking-widest leading-tight pl-6 md:pl-0"
+//           >
+//             COFFEE
+//             <span className="block text-sm font-normal tracking-[0.25em] text-gray-300 text-center">
+//               BLEND
+//             </span>
+//           </h1>
+
+//           <div className="flex items-center gap-10 mr-10">
+//             <ul className="hidden md:flex uppercase text-[12px] py-4 gap-14">
+//               {[
+//                 { name: "Home", path: "/" },
+//                 { name: "Menu", path: "/menu" },
+//                 { name: "Services", path: "/services" },
+//                 { name: "Blog", path: "/blog" },
+//                 { name: "About", path: "/about" },
+//                 { name: "Contact", path: "/contact" },
+//               ].map((item, i) => (
+//                 <li key={i}>
+//                   <span
+//                     onClick={() => triggerLoad(item.path)}
+//                     className="relative transition duration-200 hover:text-yellow-500 cursor-pointer"
+//                   >
+//                     {item.name}
+//                   </span>
+//                 </li>
+//               ))}
+
+//               <li className="relative cursor-pointer group">
+//                 <span className="transition duration-200 hover:text-yellow-500 uppercase">
+//                   Shop
+//                 </span>
+
+//                 <ul className="absolute left-1/2 -translate-x-1/2 mt-3 bg-black/90 text-white rounded-lg shadow-lg w-40 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/shop")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Shop
+//                     </span>
+//                   </li>
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/SingleProduct")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Single Product
+//                     </span>
+//                   </li>
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/cart")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Cart
+//                     </span>
+//                   </li>
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/checkout")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Checkout
+//                     </span>
+//                   </li>
+//                 </ul>
+//               </li>
+//             </ul>
+
+//             {isLoggedIn && (
+//               <div
+//                 onClick={() => triggerLoad("/cart")}
+//                 className="relative flex items-center cursor-pointer"
+//               >
+//                 <ShoppingCart className="w-6 h-6 hover:text-yellow-500 transition-colors duration-200 cursor-pointer" />
+//                 {cartCount > 0 && (
+//                   <span className="absolute -top-2 -right-3 bg-yellow-500 text-xs font-semibold rounded-full px-1.5 cursor-pointer">
+//                     {cartCount}
+//                   </span>
+//                 )}
+//               </div>
+//             )}
+
+//             {!isLoggedIn ? (
+//               <button
+//                 onClick={() => triggerLoad("/login")}
+//                 className="px-6 py-2 rounded-[4px] font-bold shadow-lg text-[15px] bg-green-500 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
+//               >
+//                 Login
+//               </button>
+//             ) : (
+//               <button
+//                 onClick={handleLogout}
+//                 className="px-6 py-2 rounded-xl font-bold shadow-lg bg-red-600 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
+//               >
+//                 Logout
+//               </button>
+//             )}
+
+//             <button
+//               onClick={() => setMenuOpen(!menuOpen)}
+//               className="md:hidden focus:outline-none cursor-pointer"
+//             >
+//               <svg
+//                 className="w-7 h-7"
+//                 fill="none"
+//                 stroke="currentColor"
+//                 strokeWidth="2"
+//                 viewBox="0 0 24 24"
+//               >
+//                 <path
+//                   strokeLinecap="round"
+//                   strokeLinejoin="round"
+//                   d={
+//                     menuOpen
+//                       ? "M6 18L18 6M6 6l12 12"
+//                       : "M4 6h16M4 12h16m-7 6h7"
+//                   }
+//                 />
+//               </svg>
+//             </button>
+//           </div>
+//         </div>
+//       </nav>
+//     </>
+//   );
+// }
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { ShoppingCart } from "lucide-react";
+// import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
+
+// export default function Navbar() {
+//   const [menuOpen, setMenuOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [isLoggedIn, setIsLoggedIn] = useState(false);
+//   const [cartCount, setCartCount] = useState(0);
+//   const [loading, setLoading] = useState(false);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     let timeout;
+//     const handleScroll = () => {
+//       clearTimeout(timeout);
+//       timeout = setTimeout(() => {
+//         setScrolled(window.scrollY > 50);
+//       }, 80);
+//     };
+//     window.addEventListener("scroll", handleScroll);
+
+//     const loggedIn = localStorage.getItem("isLoggedIn");
+//     if (loggedIn === "true") {
+//       setIsLoggedIn(true);
+//       fetchCartCount();
+//       const interval = setInterval(fetchCartCount, 100);
+//       return () => clearInterval(interval);
+//     }
+
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//       clearTimeout(timeout);
+//     };
+//   }, []);
+
+//   const fetchCartCount = async () => {
+//     const userId = localStorage.getItem("userId");
+//     if (!userId) return;
+//     try {
+//       const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+//       const count =
+//         res.data.items?.reduce((sum, item) => sum + item.quantity, 0) || 0;
+//       setCartCount(count);
+//     } catch {
+//       setCartCount(0);
+//     }
+//   };
+
+//   const triggerLoad = (path) => {
+//     setLoading(true);
+//     setTimeout(() => {
+//       navigate(path);
+//       setLoading(false);
+//     }, 600);
+//   };
+
+//   const handleLogout = () => {
+//     setLoading(true);
+//     localStorage.removeItem("isLoggedIn");
+//     localStorage.removeItem("userId");
+//     setIsLoggedIn(false);
+//     setCartCount(0);
+//     setTimeout(() => {
+//       navigate("/");
+//       setLoading(false);
+//     }, 600);
+//   };
+
+//   return (
+//     <>
+//       {loading && (
+//         <div className="fixed inset-0 flex justify-center items-center bg-black/70 z-[9999]">
+//           <div className="w-12 h-12 border-5 border-b-amber-300 border-t-transparent rounded-full animate-spin"></div>
+//         </div>
+//       )}
+
+//       <nav
+//         className={`fixed top-0 w-full h-[80px] z-50 transition-colors duration-300 ${
+//           scrolled ? "bg-black shadow-lg" : "bg-black/60 backdrop-blur-md"
+//         }`}
+//       >
+//         <div className="max-w-30xl flex justify-between items-center py-4 text-white">
+//           <h1
+//             onClick={() => triggerLoad("/")}
+//             className="cursor-pointer text-xl ml-30 font-medium tracking-widest leading-tight pl-6 md:pl-0"
+//           >
+//             COFFEE
+//             <span className="block text-sm font-normal tracking-[0.25em] text-gray-300 text-center">
+//               BLEND
+//             </span>
+//           </h1>
+
+//           <div className="flex items-center gap-10 mr-10">
+//             <ul className="hidden md:flex uppercase text-[12px] py-4 gap-14">
+//               {[
+//                 { name: "Home", path: "/" },
+//                 { name: "Menu", path: "/menu" },
+//                 { name: "Services", path: "/services" },
+//                 { name: "Blog", path: "/blog" },
+//                 { name: "About", path: "/about" },
+//                 { name: "Contact", path: "/contact" },
+//               ].map((item, i) => (
+//                 <li key={i}>
+//                   <span
+//                     onClick={() => triggerLoad(item.path)}
+//                     className="relative transition duration-200 hover:text-yellow-500 cursor-pointer"
+//                   >
+//                     {item.name}
+//                   </span>
+//                 </li>
+//               ))}
+
+//               <li className="relative cursor-pointer group">
+//                 <span className="transition duration-200 hover:text-yellow-500 uppercase">
+//                   Shop
+//                 </span>
+
+//                 <ul className="absolute left-1/2 -translate-x-1/2 mt-3 bg-black/90 text-white rounded-lg shadow-lg w-40 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/shop")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Shop
+//                     </span>
+//                   </li>
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/SingleProduct")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Single Product
+//                     </span>
+//                   </li>
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/cart")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Cart
+//                     </span>
+//                   </li>
+//                   <li>
+//                     <span
+//                       onClick={() => triggerLoad("/checkout")}
+//                       className="block px-4 py-2 hover:text-white text-gray-500 cursor-pointer"
+//                     >
+//                       Checkout
+//                     </span>
+//                   </li>
+//                 </ul>
+//               </li>
+//             </ul>
+
+//             {isLoggedIn && (
+//               <div
+//                 onClick={() => triggerLoad("/cart")}
+//                 className="relative flex items-center cursor-pointer"
+//               >
+//                 <ShoppingCart className="w-6 h-6 hover:text-yellow-500 transition-colors duration-200 cursor-pointer" />
+//                 {cartCount > 0 && (
+//                   <span className="absolute -top-2 -right-3 bg-yellow-500 text-xs font-semibold rounded-full px-1.5 cursor-pointer">
+//                     {cartCount}
+//                   </span>
+//                 )}
+//               </div>
+//             )}
+
+//             {!isLoggedIn ? (
+//               <button
+//                 onClick={() => triggerLoad("/login")}
+//                 className="px-6 py-2 rounded-[4px] font-bold shadow-lg text-[15px] bg-green-500 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
+//               >
+//                 Login
+//               </button>
+//             ) : (
+//               <button
+//                 onClick={handleLogout}
+//                 className="px-6 py-2 rounded-xl font-bold shadow-lg bg-red-600 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
+//               >
+//                 Logout
+//               </button>
+//             )}
+
+//             <button
+//               onClick={() => setMenuOpen(!menuOpen)}
+//               className="md:hidden focus:outline-none cursor-pointer"
+//             >
+//               <svg
+//                 className="w-7 h-7"
+//                 fill="none"
+//                 stroke="currentColor"
+//                 strokeWidth="2"
+//                 viewBox="0 0 24 24"
+//               >
+//                 <path
+//                   strokeLinecap="round"
+//                   strokeLinejoin="round"
+//                   d={
+//                     menuOpen
+//                       ? "M6 18L18 6M6 6l12 12"
+//                       : "M4 6h16M4 12h16m-7 6h7"
+//                   }
+//                 />
+//               </svg>
+//             </button>
+//           </div>
+//         </div>
+//       </nav>
+//     </>
+//   );
+// }
+
+
+
+import React, { useState, useEffect } from "react";
 import { ShoppingCart } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Navbar() {
@@ -213,24 +846,25 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     let timeout;
-
     const handleScroll = () => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         setScrolled(window.scrollY > 50);
       }, 80);
     };
-
     window.addEventListener("scroll", handleScroll);
 
     const loggedIn = localStorage.getItem("isLoggedIn");
     if (loggedIn === "true") {
       setIsLoggedIn(true);
       fetchCartCount();
+      const interval = setInterval(fetchCartCount, 100);
+      return () => clearInterval(interval);
     }
 
     return () => {
@@ -242,7 +876,6 @@ export default function Navbar() {
   const fetchCartCount = async () => {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
-
     try {
       const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
       const count =
@@ -253,146 +886,166 @@ export default function Navbar() {
     }
   };
 
+  const triggerLoad = (path) => {
+    setLoading(true);
+    setTimeout(() => {
+      navigate(path);
+      setLoading(false);
+    }, 600);
+  };
+
   const handleLogout = () => {
+    setLoading(true);
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userId");
     setIsLoggedIn(false);
     setCartCount(0);
-    navigate("/");
+    setTimeout(() => {
+      navigate("/");
+      setLoading(false);
+    }, 800);
   };
 
   return (
-    <nav
-      className={`fixed top-0 w-full h-[80px] z-50 transition-colors duration-300 ${scrolled ? "bg-black shadow-lg" : "bg-black/60 backdrop-blur-md"
+    <>
+      {loading && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black/70 z-[9999]">
+          <div className="w-12 h-12 border-5 border-b-amber-300 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+
+      <nav
+        className={`fixed top-0 w-full h-[70px] z-50 transition-colors duration-1000 ${
+          scrolled ? "shadow-lg" : "bg-black/80 backdrop-blur-md"
         }`}
-    >
-      <div className="max-w-30xl flex justify-between items-center py-4 text-white">
-        <Link to="/" className="cursor-pointer">
-          <h1 className="text-xl ml-30 font-medium tracking-widest leading-tight pl-6 md:pl-0">
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center py-4 text-white px-6 md:px-12">
+          <h1
+            onClick={() => triggerLoad("/")}
+            className="cursor-pointer text-2xl font-bold tracking-wider leading-tight"
+          >
             COFFEE
-            <span className="block text-sm font-normal tracking-[0.25em] text-gray-300 text-center">
+            <span className="block text-sm font-medium tracking-widest text-gray-300 text-center">
               BLEND
             </span>
           </h1>
-        </Link>
 
-        <div className="flex items-center gap-10 mr-10">
-          <ul className="hidden md:flex uppercase text-[12px] py-4 gap-14">
-            {[
-              { name: "Home", path: "/" },
-              { name: "Menu", path: "/menu" },
-              { name: "Services", path: "/services" },
-              { name: "Blog", path: "/blog" },
-              { name: "About", path: "/about" },
-              { name: "Contact", path: "/contact" },
-            ].map((item, i) => (
-              <li key={i}>
-                <Link
-                  to={item.path}
-                  className="relative transition duration-200 hover:text-yellow-500 cursor-pointer"
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
+          <div className="flex items-center gap-10">
+            <ul className="hidden md:flex uppercase text-[14px] gap-10">
+              {[
+                { name: "Home", path: "/" },
+                { name: "Menu", path: "/menu" },
+                { name: "Services", path: "/services" },
+                { name: "Blog", path: "/blog" },
+                { name: "About", path: "/about" },
+                { name: "Contact", path: "/contact" },
+              ].map((item, i) => (
+                <li key={i} className="relative">
+                  <span
+                    onClick={() => triggerLoad(item.path)}
+                    className="cursor-pointer transition-all duration-300 hover:text-yellow-500 after:content-[''] after:block after:h-[2px] after:bg-yellow-500 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                  >
+                    {item.name}
+                  </span>
+                </li>
+              ))}
 
-            <li className="relative cursor-pointer group">
-              <span className="transition duration-200 hover:text-yellow-500 uppercase">
-                Shop
-              </span>
-
-              <ul className="absolute left-1/2 -translate-x-1/2 mt-3 bg-black/90 text-white rounded-lg shadow-lg w-40 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <li>
-                  <Link
-                    to="/shop"
-                    className="block px-4 py-2 hover:text-white text-gray-500"
-                  >
-                    Shop
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/SingleProduct"
-                    className="block px-4 py-2 hover:text-white text-gray-500"
-                  >
-                    Single Product
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/cart"
-                    className="block px-4 py-2 hover:text-white text-gray-500"
-                  >
-                    Cart
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/checkout"
-                    className="block px-4 py-2 hover:text-white text-gray-500"
-                  >
-                    Checkout
-                  </Link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-
-          {isLoggedIn && (
-            <Link
-              to="/cart"
-              className="relative flex items-center cursor-pointer"
-            >
-              <ShoppingCart className="w-6 h-6 hover:text-yellow-500 transition-colors duration-200 cursor-pointer" />
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-3 bg-yellow-500 text-xs font-semibold rounded-full px-1.5 cursor-pointer">
-                  {cartCount}
+              <li className="relative cursor-pointer group">
+                <span className="transition-all duration-300 hover:text-yellow-500 uppercase">
+                  Shop
                 </span>
-              )}
-            </Link>
-          )}
+                <ul className="absolute left-1/2 -translate-x-1/2 mt-3 bg-black/90 text-white rounded-lg shadow-lg w-44 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <li>
+                    <span
+                      onClick={() => triggerLoad("/shop")}
+                      className="block px-4 py-2 hover:text-yellow-500 text-gray-400 cursor-pointer transition-colors duration-300"
+                    >
+                      Shop
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      onClick={() => triggerLoad("/SingleProduct")}
+                      className="block px-4 py-2 hover:text-yellow-500 text-gray-400 cursor-pointer transition-colors duration-300"
+                    >
+                      Single Product
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      onClick={() => triggerLoad("/cart")}
+                      className="block px-4 py-2 hover:text-yellow-500 text-gray-400 cursor-pointer transition-colors duration-300"
+                    >
+                      Cart
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      onClick={() => triggerLoad("/checkout")}
+                      className="block px-4 py-2 hover:text-yellow-500 text-gray-400 cursor-pointer transition-colors duration-300"
+                    >
+                      Checkout
+                    </span>
+                  </li>
+                </ul>
+              </li>
+            </ul>
 
-          {!isLoggedIn ? (
-            <Link
-              to="/login"
-              className="px-6 py-2 rounded-[4px] font-bold shadow-lg text-[15px] bg-green-500 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
-            >
-              Login
-            </Link>
-          ) : (
+            {isLoggedIn && (
+              <div
+                onClick={() => triggerLoad("/cart")}
+                className="relative flex items-center cursor-pointer"
+              >
+                <ShoppingCart className="w-6 h-6 hover:text-yellow-500 transition-colors duration-300" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-3 bg-yellow-500 text-xs font-semibold rounded-full px-1.5 cursor-pointer animate-pulse">
+                    {cartCount}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {!isLoggedIn ? (
+              <button
+                onClick={() => triggerLoad("/login")}
+                className="px-6 py-2 rounded-lg font-bold text-[15px] bg-green-500 text-white transition-all duration-300 hover:scale-105 hover:bg-green-600"
+              >
+                Login
+              </button>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="px-6 py-2 rounded-lg font-bold text-[15px] bg-red-600 text-white transition-all duration-300 hover:scale-105 hover:bg-red-700"
+              >
+                Logout
+              </button>
+            )}
+
             <button
-              onClick={handleLogout}
-              className="px-6 py-2 rounded-xl font-bold shadow-lg bg-red-600 text-white transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden focus:outline-none cursor-pointer"
             >
-              Logout
+              <svg
+                className="w-7 h-7 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d={
+                    menuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16m-7 6h7"
+                  }
+                />
+              </svg>
             </button>
-          )}
-
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden focus:outline-none cursor-pointer"
-          >
-            <svg
-              className="w-7 h-7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d={
-                  menuOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M4 6h16M4 12h16m-7 6h7"
-                }
-              />
-            </svg>
-          </button>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
-
